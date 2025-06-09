@@ -3,23 +3,25 @@
 <head th:replace="~{layout :: head(ログイン)}"></head>
 <body>
     <div th:replace="~{layout :: header}"></div>
-    <h3>ログイン</h3>
-    <div th:if="${param.error}" style="color:red">
-        ユーザ名、またはパスワードが違います
+    <div class="w-50 mx-auto mt-4">
+        <div class="alert alert-danger" th:if="${param.error}">
+            ユーザ名、またはパスワードが違います
+        </div>
+        <div class="alert alert-into" th:if="${param.register}">
+            登録に成功しました
+        </div>
     </div>
-    <div th:if="${param.register}" style="color:blue">
-        登録に成功しました
-    </div>
-    <form th:action="@{/login}" method="post">
-        <div>
-            <label for="username">ユーザ名：</label>
-            <input type="text" id="username" name="username">
+    <h3 class="text-center">ログイン</h3>
+    <form th:action="@{/login}" method="post" class="w-25 mx-auto mt-5 p-4 border rounded shadow">
+        <div class="mb-3">
+            <label for="username" class="form-label">ユーザ名：</label>
+            <input type="text" id="username" name="username" class="form-control" placeholder="ユーザー名を入力">
         </div>
         <div>
-            <label for="password">パスワード：</label>
-            <input type="password" id="password" name="password">
+            <label for="password" class="form-label">パスワード：</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="パスワードを入力">
         </div>
-        <button type="submit">ログイン</button>
+        <button type="submit" class="btn btn-primary w-100 mt-3">ログイン</button>
     </form>
     <div th:replace="~{layout :: footer}"></div>
 </body>

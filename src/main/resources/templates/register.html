@@ -3,17 +3,17 @@
 <head th:replace="~{layout :: head(ユーザ登録)}"></head>
 <body>
     <div th:replace="~{layout :: header}"></div>
-    <h3>ユーザ登録</h3>
-    <form th:action="@{/register}" th:object="${userForm}" method="post">
-        <div>
-            <label for="username">ユーザ名：</label>
-            <input type="text" id="username" name="username" th:field="*{username}">
+    <h3 class="text-center mt-2">ユーザ登録</h3>
+    <form th:action="@{/register}" th:object="${userForm}" method="post" class="w-25 mx-auto mt-5 p-4 border rounded shadow">
+        <div class="mb-3">
+            <label for="username" class="form-label">ユーザ名：</label>
+            <input type="text" id="username" name="username" class="form-control" placeholder="ユーザー名を入力" th:field="*{username}">
         </div>
-        <div>
-            <label for="password">パスワード：</label>
-            <input type="password" id="password" name="password" th:field="*{password}">
+        <div class="mb-3">
+            <label for="password" class="form-label">パスワード：</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="パスワードを入力" th:field="*{password}">
         </div>
-        <button type="submit">登録</button>
+        <button type="submit" class="btn btn-primary w-100">登録</button>
     </form>
     <div th:replace="~{layout :: footer}"></div>
 </body>

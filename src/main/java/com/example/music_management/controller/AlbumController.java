@@ -17,6 +17,8 @@ import com.example.music_management.viewmodel.AlbumViewModel;
 import com.example.music_management.security.CustomUserDetails;
 import com.example.music_management.viewmodel.MusicViewModel;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 @RequestMapping("/albums")
@@ -115,4 +117,10 @@ public class AlbumController {
         musicService.updateMusic(musicId, music);
         return "redirect:/albums/" + albumId;
     }
+
+    @GetMapping("/test1")
+    public String test1() {
+        return "test1";
+    }
+    
 }

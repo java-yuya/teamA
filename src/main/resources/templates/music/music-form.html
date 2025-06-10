@@ -4,7 +4,7 @@
 <body>
     <div th:replace="~{layout :: header}"></div>
     <h3 class="text-center">楽曲登録</h3>
-    <form th:action="@{/albums/{albumId}/musics/new(albumId=${musicForm.albumId})}" method="post" class="w-58 mx-auto mt-5 p-4 border rounded shadow" th:object="${musicForm}">
+    <form th:action="@{/albums/{albumId}/musics/new(albumId=${musicForm.albumId})}" method="post" class="w-50 mx-auto mt-5 p-4 border rounded shadow" th:object="${musicForm}">
         <div class="mb-3">
             <label for="title" class="form-label">タイトル：</label>
             <input type="text" id="title" name="title" class="form-control" placeholder="タイトルを入力" th:field="*{title}">

@@ -3,11 +3,11 @@
 <head th:replace="~{layout :: head(アルバム一覧)}">
 <body>
     <div th:replace="~{layout :: header}"></div>
-    <div>
-        <div th:if="${error}" th:text="${error}" style="color:red">sample message</div>
+    <div class="w-50 mx-auto mt-4">
+        <div th:if="${error}" th:text="${error}" class="alert alert-danger" >sample message</div>
     </div>
-    <h3>アルバム一覧</h3>
-    <table>
+    <h3 class="text-center">アルバム一覧</h3>
+    <table class="table table-striped table-bordered w-75 mx-auto">
         <thead>
         <tr>
             <th>ID</th>

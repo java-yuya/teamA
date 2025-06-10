@@ -116,8 +116,13 @@ public class AlbumController {
         return "redirect:/albums/" + albumId;
     }
     
-    @GetMapping("/sample")
-    public String sample() {
-       return "sample";
+    @GetMapping("/sample1")
+    public String sample1() {
+       return "sample1";
+    }
+
+    @GetMapping("/sample2")
+    public String sample2() {
+       return "sample2";
     }
 }

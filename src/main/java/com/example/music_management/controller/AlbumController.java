@@ -17,7 +17,7 @@ import com.example.music_management.viewmodel.AlbumViewModel;
 import com.example.music_management.security.CustomUserDetails;
 import com.example.music_management.viewmodel.MusicViewModel;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-
+//aaa
 @Controller
 @RequestMapping("/albums")
 public class AlbumController {

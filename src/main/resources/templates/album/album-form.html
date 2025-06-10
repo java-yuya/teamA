@@ -4,20 +4,20 @@
 <body>
     <div th:replace="~{layout :: header}"></div>
     <h3>アルバム登録</h3>
-    <form th:action="@{/albums/new}" th:object="${albumForm}" method="post">
-        <div>
-            <label for="title">タイトル：</label>
-            <input type="text" id="title" name="title" th:field="*{title}">
+    <form th:action="@{/albums/new}" method="post" class="w-50 mx-auto mt-5 p-4 border rounded shadow" th:object="${albumForm}">
+        <div class="mb-3">
+            <label for="title" class="form-label">タイトル：</label>
+            <input type="text" id="title" name="title" class="form-control" placeholder="タイトルを入力" th:field="*{title}">
         </div>
-        <div>
-            <label for="artist">アーティスト：</label>
-            <input type="text" id="artist" name="artist" th:field="*{artist}">
+        <div class="mb-3">
+            <label for="artist" class="form-label">アーティスト：</label>
+            <input type="text" id="artist" name="artist" class="form-control" placeholder="アーティストを入力" th:field="*{artist}">
         </div>
-        <div>
-            <label for="release-date">リリース日：</label>
-            <input type="date" id="release-date" name="release-date" th:field="*{releaseDate}">
+        <div class="mb-3">
+            <label for="release-date" class="form-label">リリース日：</label>
+            <input type="date" id="release-date" name="release-date" class="form-control" th:field="*{releaseDate}">
         </div>
-        <button type="submit">追加</button>
+        <button type="submit" class="btn btn-primary w-180">追加</button>
    </form>
    <div th:replace="~{layout :: footer}"></div>
 </body>

@@ -4,8 +4,8 @@
 <body>
 <div th:replace="~{layout :: header}"></div>
 <div class="w-50 mx-auto mt-4"></div>
-<div th:if="${message}" th:text="${message}" style="color:blue">sample message</div>
-<div th:if="${error}" th:text="${error}" style="color:red">sample message</div>
+<div th:if="${message}" th:text="${message}" class="alert alert-info" style="color:blue">sample message</div>
+<div th:if="${error}" th:text="${error}" class="alert alert-danger" style="color:red">sample message</div>
 </div>
 <h3 class="text-center">アルバム詳細</h3>
 <table class="table table-bordered w=50 mx-auto shadow">
@@ -32,7 +32,8 @@
 </table>
 
 <h3 class="text-center">楽曲一覧</h3>
-<table class="table-light">
+<table class="table-light table-striped table-bordered w-75 mx-auto shadow">
+    <theed class="table-light">
     <tr>
         <th>お気に入り</th>
         <th>楽曲ID</th>
@@ -40,6 +41,7 @@
         <th>再生時間</th>
         <th></th>
     </tr>
+    </theed>
     <tr th:each="music : ${musics}">
         <td><span th:text="${music.isFavorite ? '☆' : ''}">☆</span></td>
         <td><span th:text="${music.musicId}">music id</span></td>
@@ -49,21 +51,21 @@
             <div class="d-flex">
             <form th:action="@{/albums/{albumId}/musics/{musicId}/edit(albumId=${album.albumId}, musicId=${music.musicId})}"
                 method="get">
-                <button type="submit">編集</button>
+                <button type="submit" class="btn btn-warning btn-sm mx-2">編集</button>
             </form>
             <form th:action="@{/albums/{albumId}/musics/{musicId}/delete(albumId=${album.albumId}, musicId=${music.musicId})}"
                 method="post">
-                <button type="submit">削除</button>
+                <button type="submit" class="btn btn-danger btn-sm mx-2" onclick="return confirm('本当に削除しますか？');">削除</button>
             </form>
             <form th:if="${music.isFavorite}" th:action="@{/favorites/delete}" method="post">
                 <input type="hidden" name="musicId" th:value="${music.musicId}">
                 <input type="hidden" name="albumId" th:value="${album.albumId}">
-                <button type="submit">お気に入り解除 </button>
+                <button type="submit" class="btn btn-danger btn-sm mx-2">お気に入り解除 </button>
             </form>
             <form th:unless="${music.isFavorite}" th:action="@{/favorites}" method="post">
                 <input type="hidden" name="musicId" th:value="${music.musicId}">
                 <input type="hidden" name="albumId" th:value="${album.albumId}">
-                <button type="submit">お気に入り</button>
+                <button type="submit" class="btn btn-primary btn-sm mx-2">お気に入り</button>
             </form>
             </div>
         </td>

@@ -10,6 +10,22 @@
 
    <body>
    <p>サンプルメッセージ2</p>
+   <h3 class="text-center">入力ページ</h3>
+            <form action="/albums/new" method="post" class="w-50 mx-auto mt-5 p-4 border rounded shadow"><input type="hidden" name="_csrf" value="yAg_01I3Cf7dA0mLisZ8cS6XYkIGJqwUnePcVDqEnBYkZEnR-j8I4mQEa8vwZ3vovutIFxygT3s0EM85r4fsZwPh-iJCXH3k"/>
+            <div class="mb-3 col-auto">
+                  <label for="title" class="form-label">Amount：</label>
+                  <input type="text" id="title" name="title" class="form-control" placeholder="タイトルを入力" value="">
+            </div>
+            <div class="mb-3">
+                  <label for="artist" class="form-label">Description：</label>
+                  <input type="text" id="artist" name="artist" class="form-control" placeholder="アーティストを入力" value="">
+            </div>
+            <div class="mb-3">
+                  <label for="release-date" class="form-label">Date：</label>
+                  <input type="date" id="release-date" name="releaseDate" class="form-control" value="">
+            </div>
+            <button type="submit" class="btn btn-primary w-180">Add</button>
+         </form>
    </body>
 <div th:replace="~{layout :: footer}"></div>
 </head>

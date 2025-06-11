@@ -2,15 +2,45 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{layout :: head(サンプル3)}">
 </head>
-
 <head>
    <body>
    <div th:replace="~{layout :: header}"></div>
    </body>
+   <div class="container">
+  <main>
+      
+    <div class="py-5 text-center">
+      <img class="d-block mx-auto mb-4" src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fcdn-icons-png.freepik.com%2F256%2F9039%2F9039453.png&type=sc960_832" alt="" width="72" height="57">
+      <h2>Add Expense</h2>
+      <p class="lead">"Beware of little expenses. A small leak will sink a great ship."</p>
+    </div>
 
+         <form action="/albums/new" method="post" class="w-50 mx-auto mt-5 p-4 border rounded shadow"><input type="hidden" name="_csrf" value="yAg_01I3Cf7dA0mLisZ8cS6XYkIGJqwUnePcVDqEnBYkZEnR-j8I4mQEa8vwZ3vovutIFxygT3s0EM85r4fsZwPh-iJCXH3k"/>
+            <div class="mb-3">
+                  <label for="title" class="form-label">Amount：</label>
+                  <input type="text" id="title" name="title" class="form-control" placeholder="タイトルを入力" value="">
+            </div>
+            <div class="mb-3">
+                  <label for="artist" class="form-label">Description：</label>
+                  <input type="text" id="artist" name="artist" class="form-control" placeholder="アーティストを入力" value="">
+            </div>
+            <div class="mb-3">
+                  <label for="release-date" class="form-label">Date：</label>
+                  <input type="date" id="release-date" name="releaseDate" class="form-control" value="">
+            </div>
+            <button type="submit" class="btn btn-primary w-180">Add</button>
+         </form>
+         <div>
+         <footer class="bg-light py-2 text-center fixed-bottom">
+            <p class="mb-0">&copy; 家計簿アプリ</p>
+         </footer>
+      </div>
+      </body>
+      </html>
    <body>
    <p>サンプルメッセージ3</p>
    </body>
 <div th:replace="~{layout :: footer}"></div>
 </head>
 </html>
+

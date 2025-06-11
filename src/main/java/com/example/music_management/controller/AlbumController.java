@@ -17,8 +17,9 @@ import com.example.music_management.viewmodel.AlbumViewModel;
 import com.example.music_management.security.CustomUserDetails;
 import com.example.music_management.viewmodel.MusicViewModel;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-//aaa
+
 @Controller
+//@RequestMapping は Controller クラス全体のルーティングを設定します。ここで設定した値が各メソッドの @GetMapping や @PostMapping の値の前に設定されます。そのため、URL は次のようなルールで決まります。「http://localhost 」 + 「/albums」+「各メソッドの設定値」
 @RequestMapping("/albums")
 public class AlbumController {
     private final AlbumService albumService;
@@ -28,12 +29,18 @@ public class AlbumController {
         this.albumService = albumService;
         this.musicService = musicService;
     }
-
+//@GetMapping に値を設定していません。そのため、このメソッドの URL は「http://localhost 」 + 「/albums」+「メソッドの設定値はなし」なので、「http://localhost/albums」 となります
     @GetMapping
     public String albums(Model model) {
         // List<Album> albums = albumService.getAllAlbums();
         List<AlbumViewModel> albums = albumService.getAllAlbumsWithMusicCount();
+        
         model.addAttribute("albums", albums);
+        /*今回は templates フォルダにサブフォルダ albums を作成しています。
+サブフォルダに入った Thymeleaf テンプレートを指定する場合は templates 
+フォルダ以下のパスを記述します。
+そのため、こちらは「templates フォルダの下の album フォルダの中の 
+album-list.html」を表示するという意味になります*/
         return "album/album-list";
     }
     

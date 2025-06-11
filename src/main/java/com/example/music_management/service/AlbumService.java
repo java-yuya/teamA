@@ -11,13 +11,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class AlbumService {
+    //ここからAlbumRepository を DI するための記述
     private final AlbumRepository albumRepository;
 
     public AlbumService(AlbumRepository albumRepository) {
         this.albumRepository = albumRepository;
     }
-
+    //ここまで
     public List<Album> getAllAlbums() {
+        //AlbumRepository に定義されているアルバム一覧取得処理を呼び出す
         return albumRepository.getAllAlbums();
     }
 
@@ -54,3 +56,4 @@ public class AlbumService {
         return albumRepository.getAllAlbumsWithMusicCount();
     }
 }
+//AlbumController へ

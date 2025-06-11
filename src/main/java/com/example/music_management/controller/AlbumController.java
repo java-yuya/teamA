@@ -132,4 +132,9 @@ album-list.html」を表示するという意味になります*/
     public String sample2() {
        return "sample2";
     }
+
+    @GetMapping("/sample3")
+    public String sample3() {
+       return "sample3";
+    }
 }

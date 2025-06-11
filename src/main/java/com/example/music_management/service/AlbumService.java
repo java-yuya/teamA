@@ -4,7 +4,7 @@ import com.example.music_management.repository.AlbumRepository;
 import com.example.music_management.entity.Album;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import com.example.music_management.form.AlbumForm;
+import com.example.music_management.form.AlbumForm; //albumFormをインポート
 import com.example.music_management.viewmodel.AlbumViewModel;
 import com.example.music_management.exception.AlbumNotFoundException;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,7 +20,8 @@ public class AlbumService {
     public List<Album> getAllAlbums() {
         return albumRepository.getAllAlbums();
     }
-
+    /*引数にAlbumFormクラスのインスタンスを受け取り、
+    それをAlbumクラスのインスタンスに変換し、Repositoryクラスに渡す*/
     public void createAlbum(AlbumForm albumForm) {
         Album album = new Album();
         album.setTitle(albumForm.getTitle());

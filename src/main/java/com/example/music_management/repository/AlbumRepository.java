@@ -21,7 +21,7 @@ public class AlbumRepository {
 
         return albumMapper.selectAllAlbums();
     }
-
+    //Mapperの処理を呼び出すメソッド
     public void insertAlbum(Album album) {
         albumMapper.insertAlbum(album);
     }

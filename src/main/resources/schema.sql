@@ -1,13 +1,13 @@
-CREATE TABLE IF NOT EXISTS albums (
-   album_id INTEGER AUTO_INCREMENT PRIMARY KEY,
-   title VARCHAR(255) NOT NULL,
-   artist VARCHAR(255) ,
-   release_date DATE,
-   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE IF NOT EXISTS albums ( /**/
+    album_id INTEGER AUTO_INCREMENT PRIMARY KEY, /*金額*/
+    title VARCHAR(255) NOT NULL, /*カテゴリ*/
+    artist VARCHAR(255) , 
+    release_date DATE, /*日付*/
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS musics (
-    music_id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    music_id INTEGER AUTO_INCREMENT PRIMARY KEY, 
     title VARCHAR(255) NOT NULL,
     duration TIME,
     album_id INTEGER NOT NULL,

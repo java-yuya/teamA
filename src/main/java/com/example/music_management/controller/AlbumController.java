@@ -43,14 +43,17 @@ public class AlbumController {
 album-list.html」を表示するという意味になります*/
         return "album/album-list";
     }
-    
+    /*アルバム登録フォームの画面を表示するためのルーティング
+     * 空のAlbumFormクラスのインスタンスを作成し、album-form画面に渡す*/
     @GetMapping("/new")
     public String albumForm(Model model) {
         AlbumForm albumForm = new AlbumForm();
         model.addAttribute("albumForm", albumForm);
         return "album/album-form";
     }
-
+    /*フォームからの登録処理を受けるルーティング
+     * 
+    */
     @PostMapping("/new")
     public String createAlbum(AlbumForm albumForm) {
         albumService.createAlbum(albumForm);

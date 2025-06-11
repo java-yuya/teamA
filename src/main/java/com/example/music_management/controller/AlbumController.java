@@ -125,4 +125,9 @@ public class AlbumController {
     public String sample2() {
        return "sample2";
     }
+
+    @GetMapping("/sample3")
+    public String sample3() {
+       return "sample3";
+    }
 }

@@ -9,10 +9,11 @@ import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Update;
 import com.example.music_management.viewmodel.AlbumViewModel;
-
+//MyBatis のマッパーインタフェースであることを宣言また、このアノテーションで Spring Boot の DI の対象になります
 @Mapper
+//MyBatis はインタフェースです。間違ってクラスで作成しないように注意してください。
 public interface AlbumMapper {
-
+//@Select アノテーションを使って実行したい SQL を記述します。今回は albums テーブルからすべての情報を取得します。Mybatis の機能により、取得したレコードはそれぞれ Album クラスのインスタンスに変換され、List 型で return されます。戻り値を定義するだけで上記の処理を Mybatis が自動でやってくれるので、便利なライブラリです
   @Select("SELECT * FROM albums")
   List<Album> selectAllAlbums();
 
@@ -43,3 +44,4 @@ public interface AlbumMapper {
           """)
   public List<AlbumViewModel> selectAllAlbumsWithMusicCount();
 }
+//AlbumMapperを呼び出すためのクラス　AlbumRepositoryへ

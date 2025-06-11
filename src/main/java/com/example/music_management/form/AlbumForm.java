@@ -7,6 +7,7 @@ import java.time.LocalDate;
 @Data 
 //入力を受け付ける項目
 public class AlbumForm {
+    //入力された値を格納する変数
     private String title;
     private String artist;
     private LocalDate releaseDate;

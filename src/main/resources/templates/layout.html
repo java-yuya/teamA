@@ -20,8 +20,17 @@
                 <a class="nav-link" th:href="@{/albums/new}">残高</a>
             </li>
             <li class="nav-item" sec:authorize="isAuthenticated()">
+<<<<<<< HEAD
                 <a class="nav-link" th:href="@{/albums/sample2}">履歴</a>
+=======
+                <a class="nav-link" th:href="@{/albums/sample1}">サンプル1</a>
             </li>
+            <li class="nav-item" sec:authorize="isAuthenticated()">
+                <a class="nav-link" th:href="@{/albums/sample2}">サンプル2</a>
+>>>>>>> ebe067ad12d571f88615d0f11bcf9f3938c2a6fc
+            </li>
+            <li class="nav-item" sec:authorize="isAuthenticated()">
+                <a class="nav-link" th:href="@{/albums/sample3}">サンプル3</a>
             <li class="nav-item" sec:authorize="isAnonymous()">
                 <a class="nav-link" th:href="@{/register}">会員登録</a>
             </li>

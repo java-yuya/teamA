@@ -9,22 +9,22 @@
 </div>
 
 <div class="p-5"></div>
-<h3 class="text-center">アルバム詳細</h3>
-<table class="table table-bordered w=50 mx-auto shadow">
+<h3 class="text-center">口座詳細</h3>
+<table class="table table-bordered w=50 mx-auto shadow text-center">
     <tr>
-        <th class="table-light">アルバムID</th>
+        <th class="table-light">口座ID</th>
         <td th:text="${album.albumId}"></td>
     </tr>
     <tr>
-        <th class="table-light">タイトル</th>
+        <th class="table-light">口座名義</th>
         <td th:text="${album.title}"></td>
     </tr>
     <tr>
-        <th class="table-light">アーティスト</th>
+        <th class="table-light">金額</th>
         <td th:text="${album.artist}"></td>
     </tr>
     <tr>
-        <th class="table-light">リリース日</th>
+        <th class="table-light">カテゴリ</th>
         <td th:text="${album.releaseDate}"></td>
     </tr>
     <tr>
@@ -33,8 +33,8 @@
     </tr>
 </table>
 
-<h3 class="text-center">楽曲一覧</h3>
-<table class="table-light table-striped table-bordered w-75 mx-auto shadow">
+<h3 class="text-center">履歴一覧</h3>
+<table class="table-light table-striped table-bordered w-75 mx-auto shadow text-center">
     <theed class="table-light">
     <tr>
         <th>お気に入り</th>
@@ -50,7 +50,7 @@
         <td><span th:text="${music.title}">music title</span></td>
         <td><span th:text="${#temporals.format(music.duration, 'HH:mm:ss')}">music duration</span></td>
         <td>
-            <div class="d-flex">
+            <div class="d-flex justify-content-center">
             <form th:action="@{/albums/{albumId}/musics/{musicId}/edit(albumId=${album.albumId}, musicId=${music.musicId})}"
                 method="get">
                 <button type="submit" class="btn btn-warning btn-sm mx-2">編集</button>
@@ -74,7 +74,7 @@
     </tr>
 </table>
 <div class="d-flex justify-content-center gap-3">
-<a th:href="@{/albums/{albumId}/musics/new(albumId=${album.albumId})}" class="btn btn-primary mt-3 w-25">楽曲を追加</a>
+<a th:href="@{/albums/{albumId}/musics/new(albumId=${album.albumId})}" class="btn btn-primary mt-3 w-25">収入・支出を追加</a>
 <a th:href="@{/albums}" class="btn btn-secondary mt-3 w-25">一覧に戻る</a>
 </div>
 <div th:replace="~{layout :: footer}"></div>

@@ -4,53 +4,9 @@
 <body>
     <div th:replace="~{layout :: header}"></div>
     <div class="p-5"></div>
-    <div class="py-5 text-center">
-      <img class="d-block mx-auto mb-4" src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fcdn-icons-png.freepik.com%2F256%2F9039%2F9039453.png&type=sc960_832" alt="" width="72" height="57">
-      <h2>収入・支出記録</h2>
-      <p class="lead">"今日の出費が未来を作る。"</p>
-    </div>
+ 
 
-     <form action="/albums/new" method="post" class="w-50 mx-auto mt-0 p-4 border rounded shadow"><input type="hidden" name="_csrf" value="yAg_01I3Cf7dA0mLisZ8cS6XYkIGJqwUnePcVDqEnBYkZEnR-j8I4mQEa8vwZ3vovutIFxygT3s0EM85r4fsZwPh-iJCXH3k"/>
-            <div class="mb-3">
-                  <label for="artist" class="form-label">収入・支出：</label>
-                  <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                  <option selected>メニューを開いてください</option>
-                  <option value="1">収入</option>
-                  <option value="2">支出</option>
-                  </select>
-            </div>
-            <div class="mb-3">
-                  <label for="title" class="form-label">金額：</label>
-                  <input type="text" id="title" name="title" class="form-control" placeholder="金額を入力してください" value="">
-            </div>
-            <div class="mb-3">
-                  <label for="artist" class="form-label">内容：</label>
-                  <input type="text" id="artist" name="artist" class="form-control" placeholder="内容を入力してください" value="">
-            </div>
-             <div class="mb-3">
-                  <label for="artist" class="form-label">カテゴリー：</label>
-                  <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                  <option selected>メニューを開いてください</option>
-                  <option value="1">食費</option>
-                  <option value="2">交通費</option>
-                  <option value="3">娯楽費</option>
-                  </select>
-            </div>
-            <div class="mb-3">
-                  <label for="artist" class="form-label">口座：</label>
-                  <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                  <option selected>口座を開いてください</option>
-                  <option value="1">A口座</option>
-                  <option value="2">B口座</option>
-                  <option value="3">C口座</option>
-                  </select>
-            </div>
-            <div class="mb-3">
-                  <label for="release-date" class="form-label">日付：</label>
-                  <input type="date" id="release-date" name="releaseDate" class="form-control" value="">
-            </div>
-
-   <!-- <form th:action="@{/albums/{albumId}/musics/new(albumId=${musicForm.albumId})}" method="post" class="w-50 mx-auto mt-5 p-4 border rounded shadow" th:object="${musicForm}">
+    <form th:action="@{/albums/{albumId}/musics/new(albumId=${musicForm.albumId})}" method="post" class="w-50 mx-auto mt-5 p-4 border rounded shadow" th:object="${musicForm}">
         <div class="mb-3">
             <label for="title" class="form-label">タイトル：</label>
             <input type="text" id="title" name="title" class="form-control" placeholder="タイトルを入力" th:field="*{title}">
@@ -58,12 +14,12 @@
         <div class="mb-3">
             <label for="duration" class="form-label">再生時間：</label>
             <input type="time" id="duration" name="duration" class="form-control" th:field="*{duration}" step="1">
-        </div>    -->
+        </div>  
         <div>
             <input type="hidden" name="albumId" th:field="*{albumId}">
         </div>
         <button type="submit" class="btn btn-primary w-100">追加</button>
-        <a th:href="@{/albums/{albumId}(albumId=*{albumId})}" class="btn btn-secondary mt-3 w-100">口座一覧に戻る</a>
+        <a th:href="@{/albums/{albumId}(albumId=*{albumId})}" class="btn btn-secondary mt-3 w-100">アルバム詳細に戻る</a>
     </form>
     <div th:replace="~{layout :: footer}"></div>
 

@@ -21,7 +21,11 @@
         </div>
         <div class="mb-3">
             <label for="method" class="form-label">収入・支出：</label>
-            <input type="text" id="method" name="method" class="form-control" placeholder="収入・支出" th:field="*{method}">
+            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                <option selected>Open this select menu</option>
+                <option value="1">支出</option>
+                <option value="2">収入</option>
+            </select>
         </div>
         <div>
             <input type="hidden" name="albumId" th:field="*{albumId}">

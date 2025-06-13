@@ -9,7 +9,9 @@ CREATE TABLE IF NOT EXISTS albums ( /**/
 CREATE TABLE IF NOT EXISTS musics (
     music_id INTEGER AUTO_INCREMENT PRIMARY KEY, 
     title VARCHAR(255) NOT NULL,
-    duration TIME,
+    duration DATE, /*日付*/
+    price INTEGER,
+    method VARCHAR(255),
     album_id INTEGER NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (album_id) REFERENCES albums(album_id) ON DELETE CASCADE

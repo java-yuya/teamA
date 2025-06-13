@@ -6,16 +6,16 @@
     <h3 class="text-center">アルバム編集</h3>
     <form th:action="@{/albums/{albumId}/edit(albumId=${album.albumId})}" th:object="${album}" method="post" class="w-50 mx-auto mt-5 p-4 border rounded shadow">
         <div class="mb-3">
-            <label for="title" class="form-label">タイトル：</label>
+            <label for="title" class="form-label">口座名：</label>
             <input type="text" id="title" name="title" class="form-control" th:field="*{title}">
         </div>
         <div class="mb-3">
-            <label for="artist" class="form-label">アーティスト：</label>
+            <label for="artist" class="form-label">カテゴリー：</label>
             <input type="text" id="artist" name="artist" class="form-control" th:field="*{artist}">
         </div>
         <div class="mb-3">
-            <label for="release-date" class="form-label">リリース日：</label>
-            <input type="date" id="release-date" name="release-date" class="form-control" th:field="*{releaseDate}">
+            <label for="release-date" class="form-label">金額：</label>
+            <input type="number" id="release-date" name="release-date" class="form-control" th:field="*{releaseDate}">
         </div>
         <button type="submit" class="btn btn-primary w-100">変更</button>
         <a th:href="@{/albums}" class="btn btn-secondary mt-3 w-100">一覧に戻る</a>

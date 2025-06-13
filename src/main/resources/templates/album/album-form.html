@@ -6,16 +6,16 @@
     <h3>アルバム登録</h3>
     <form th:action="@{/albums/new}" method="post" class="w-50 mx-auto mt-5 p-4 border rounded shadow" th:object="${albumForm}">
         <div class="mb-3">
-            <label for="title" class="form-label">タイトル：</label>
-            <input type="text" id="title" name="title" class="form-control" placeholder="タイトルを入力" th:field="*{title}">
+            <label for="title" class="form-label">口座名：</label>
+            <input type="text" id="title" name="title" class="form-control" placeholder="口座名を入力" th:field="*{title}">
         </div>
         <div class="mb-3">
-            <label for="artist" class="form-label">アーティスト：</label>
-            <input type="text" id="artist" name="artist" class="form-control" placeholder="アーティストを入力" th:field="*{artist}">
+            <label for="artist" class="form-label">カテゴリー：</label>
+            <input type="text" id="artist" name="artist" class="form-control" placeholder="カテゴリーを入力" th:field="*{artist}">
         </div>
         <div class="mb-3">
-            <label for="release-date" class="form-label">リリース日：</label>
-            <input type="date" id="release-date" name="release-date" class="form-control" th:field="*{releaseDate}">
+            <label for="release-date" class="form-label">金額：</label>
+            <input type="number" id="release-date" name="release-date" class="form-control" th:field="*{releaseDate}">
         </div>
         <button type="submit" class="btn btn-primary w-180">追加</button>
    </form>

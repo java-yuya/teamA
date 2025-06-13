@@ -2,7 +2,7 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{layout :: head(アルバム詳細)}">
 </head>
-<body>
+<body class="bg-danger-subtle">
 <div th:replace="~{layout :: header}"></div>
 <div class="w-50 mx-auto mt-4"></div>
 <div th:if="${message}" th:text="${message}" class="alert alert-info" style="color:blue">sample message</div>
@@ -38,7 +38,7 @@
 <br>
 <br>
 <h3 class="text-center">履歴一覧</h3>
-<table class="table-light table-striped table-bordered w-75 mx-auto shadow text-center">
+<table class="table-light table-striped table-bordered w-75 mx-auto shadow text-center bg-body">
     <theed class="table-light">
     <tr>
         <th>お気に入り</th>

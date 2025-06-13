@@ -5,12 +5,11 @@
 <body class="bg-danger-subtle">
 <div th:replace="~{layout :: header}"></div>
 <div class="w-50 mx-auto mt-4"></div>
-
-<div th:if="${message}" th:text="${message}" class="alert alert-info" style="color:blue">sample message</div>
+<br><br><br>
+<div th:if="${message}" th:text="${message}" class="alert alert-info " style="color:blue">sample message</div>
 <div th:if="${error}" th:text="${error}" class="alert alert-danger" style="color:red">sample message</div>
 </div>
-
-<div class="p-5"></div>
+<div class="p-3"></div>
 <h3 class="text-center">口座詳細</h3>
 <table class="table table-bordered w-50 shadow text-center mx-auto">
     <!-- <table class="table-light table-striped table-bordered w-75 mx-auto shadow text-center"> -->

@@ -28,7 +28,9 @@
         </div>
         <button type="submit" class="btn btn-promary w-100">変更</button>
     </form>
-    <a th:href="@{/albums/{albumId}(albumId=${music.albumId})}" class="btn btn-secondary mt-3 w-auto ">アルバムに戻る</a>
+    <div class="d-flex justify-content-center">
+    <a th:href="@{/albums/{albumId}(albumId=${music.albumId})}" class="btn btn-secondary mt-3 w-auto">アルバムに戻る</a>
+    </div>
     <d ivth:replace="~{layout :: footer}"></div>
 </body>
 </html>

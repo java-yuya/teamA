@@ -1,15 +1,17 @@
 CREATE TABLE IF NOT EXISTS albums ( /**/
-    album_id INTEGER AUTO_INCREMENT PRIMARY KEY, /*金額*/
+    album_id INTEGER AUTO_INCREMENT PRIMARY KEY, /*口座ID*/
     title VARCHAR(255) NOT NULL, /*カテゴリ*/
-    artist VARCHAR(255) , 
-    release_date DATE, /*日付*/
+    artist VARCHAR(255) , /**/
+    release_date INTEGER, /*金額*/
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS musics (
     music_id INTEGER AUTO_INCREMENT PRIMARY KEY, 
     title VARCHAR(255) NOT NULL,
-    duration TIME,
+    duration DATE, /*日付*/
+    price INTEGER,
+    method VARCHAR(255),
     album_id INTEGER NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (album_id) REFERENCES albums(album_id) ON DELETE CASCADE

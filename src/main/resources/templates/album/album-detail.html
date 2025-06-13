@@ -2,7 +2,7 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{layout :: head(アルバム詳細)}">
 </head>
-<body>
+<body class="bg-danger-subtle">
 <div th:replace="~{layout :: header}"></div>
 <div class="w-50 mx-auto mt-4"></div>
 <div th:if="${message}" th:text="${message}" class="alert alert-info" style="color:blue">sample message</div>
@@ -38,13 +38,15 @@
 <br>
 <br>
 <h3 class="text-center">履歴一覧</h3>
-<table class="table-light table-striped table-bordered w-75 mx-auto shadow text-center">
+<table class="table-light table-striped table-bordered w-75 mx-auto shadow text-center bg-body">
     <theed class="table-light">
     <tr>
         <th>お気に入り</th>
         <th>楽曲ID</th>
         <th>タイトル</th>
         <th>再生時間</th>
+        <th>金額</th>
+        <th>収入・支出</th>
         <th></th>
     </tr>
     </theed>
@@ -52,7 +54,9 @@
         <td><span th:text="${music.isFavorite ? '☆' : ''}">☆</span></td>
         <td><span th:text="${music.musicId}">music id</span></td>
         <td><span th:text="${music.title}">music title</span></td>
-        <td><span th:text="${#temporals.format(music.duration, 'HH:mm:ss')}">music duration</span></td>
+        <td><span th:text="${#temporals.format(music.duration, 'yyyy-MM-dd')}">music duration</span></td>
+        <td><span th:text="${music.price}">music price</span></td>
+        <td><span th:text="${music.method}">music method</span></td>
         <td>
             <div class="d-flex justify-content-center">
             <form th:action="@{/albums/{albumId}/musics/{musicId}/edit(albumId=${album.albumId}, musicId=${music.musicId})}"

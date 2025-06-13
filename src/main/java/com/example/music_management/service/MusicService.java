@@ -36,6 +36,8 @@ public class MusicService {
         Music music = new Music();
         music.setTitle(musicForm.getTitle());
         music.setDuration(musicForm.getDuration());
+        music.setPrice(musicForm.getPrice());
+        music.setMethod(musicForm.getMethod());
         music.setAlbumId(musicForm.getAlbumId());
         
         musicRepository.insertMusic(music);

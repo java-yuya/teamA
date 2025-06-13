@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{layout :: head(楽曲編集)}"></head>
-<body>
+<body class="bg-danger-subtle">
     <div th:replace="~{layout :: header}"></div>
+    <br><br><br><br>
     <h3 class="text-center">楽曲編集</h3>
     <form th:action="@{/albums/{albumId}/musics/{musicId}/edit(albumId=${music.albumId}, musicId=${music.musicId})}"
-       th:object="${music}"method="post" class="w-50 mx-auto mt-5 p-4 border rounded shadow">
+       th:object="${music}"method="post" class="w-50 mx-auto mt-5 p-4 border rounded shadow bg-body">
         <div class="mb-3">
             <label for="title" class="form-label">タイトル：</label>
             <input type="text" id="title" name="title" th:field="*{title}" class="form-control">
         </div>
         <div class="mb-3">
-            <label for="duration" class="form-label">再生時間：</label>
-            <input type="time" id="duration" name="duration" th:field="*{duration}" step="1" class="form-control">
+            <label for="duration" class="form-label">日付：</label>
+            <input type="date" id="duration" name="duration" th:field="*{duration}" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">金額：</label>
+            <input type="text" id="price" name="price" th:field="*{price}" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="method" class="form-label">収入・支出：</label>
+            <input type="text" id="method" name="method" th:field="*{method}" class="form-control">
         </div>
         <div>
             <input type="hidden" name="musicId" th:field="*{musicId}">

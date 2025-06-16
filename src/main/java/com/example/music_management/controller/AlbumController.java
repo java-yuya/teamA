@@ -24,6 +24,8 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 public class AlbumController {
     private final AlbumService albumService;
     private final MusicService musicService;
+    // bopのtypeには0か1が入っている（0は収入、1は支出）
+    private static final String[] TYPES = {"収入", "支出"};
 
     public AlbumController(AlbumService albumService, MusicService musicService) {
         this.albumService = albumService;
@@ -36,6 +38,7 @@ public class AlbumController {
         List<AlbumViewModel> albums = albumService.getAllAlbumsWithMusicCount();
         
         model.addAttribute("albums", albums);
+        model.addAttribute("types", TYPES);
         /*今回は templates フォルダにサブフォルダ albums を作成しています。
 サブフォルダに入った Thymeleaf テンプレートを指定する場合は templates 
 フォルダ以下のパスを記述します。
@@ -69,6 +72,7 @@ album-list.html」を表示するという意味になります*/
         List<MusicViewModel> musics = musicService.selectMusicsWithFavorite(albumId, userDetails.getUserId());
         model.addAttribute("album", album);
         model.addAttribute("musics", musics);
+        model.addAttribute("types", TYPES);
         return "album/album-detail";
     }
 

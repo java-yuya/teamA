@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{layout :: head(ログイン)}"></head>
-<body>
+<body class="bg-danger-subtle">
     <div th:replace="~{layout :: header}"></div>
     <div class="w-50 mx-auto mt-4" style="padding-top: 100px;">
         <div class="alert alert-danger" th:if="${param.error}">
@@ -12,7 +12,10 @@
         </div>
     </div>
     <h3 class="text-center">ログイン</h3>
-    <form th:action="@{/login}" method="post" class="w-25 mx-auto mt-5 p-4 border rounded shadow">
+    <form th:action="@{/login}" method="post" class="w-25 mx-auto mt-4 p-4 border rounded shadow bg-body">
+        <div class = "p-2"></div>
+        <img src ="https://postfiles.pstatic.net/MjAyNTA2MTZfMjc3/MDAxNzUwMDQyNzU0OTM2.qeZ9x3GkMypfbxq8yPUnr4lvTC3TdKb2nF7tpZZ5C6kg.0Y7kEPbdB1yKynqI2q5ECrWn1ZHPWf4erFRmoM_lXpsg.PNG/%E3%82%BF%E3%82%A4%E3%83%88%E3%83%AB%E3%81%AA%E3%81%97.png?type=w966" class = "w-100">
+        <div class = "p-4"></div>
         <div class="mb-3">
             <label for="username" class="form-label">ユーザ名：</label>
             <input type="text" id="username" name="username" class="form-control" placeholder="ユーザー名を入力">
@@ -23,6 +26,7 @@
         </div>
         <button type="submit" class="btn btn-primary w-100 mt-3">ログイン</button>
     </form>
+    <br><br>
     <div th:replace="~{layout :: footer}"></div>
 </body>
 </html>

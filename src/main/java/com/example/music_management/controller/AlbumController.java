@@ -24,7 +24,9 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 public class AlbumController {
     private final AlbumService albumService;
     private final MusicService musicService;
-    // bopのtypeには0か1が入っている（0は収入、1は支出）
+    // albumsのcategoryには0か1が入っている（0は普通預金、1は定期預金）
+    private static final String[] CATEGORIES = {"普通預金", "定期預金"};
+    // musicのtypeには0か1が入っている（0は収入、1は支出）
     private static final String[] TYPES = {"収入", "支出"};
 
     public AlbumController(AlbumService albumService, MusicService musicService) {
@@ -38,6 +40,7 @@ public class AlbumController {
         List<AlbumViewModel> albums = albumService.getAllAlbumsWithMusicCount();
         
         model.addAttribute("albums", albums);
+        model.addAttribute("categories", CATEGORIES);
         model.addAttribute("types", TYPES);
         /*今回は templates フォルダにサブフォルダ albums を作成しています。
 サブフォルダに入った Thymeleaf テンプレートを指定する場合は templates 
@@ -52,6 +55,7 @@ album-list.html」を表示するという意味になります*/
     public String albumForm(Model model) {
         AlbumForm albumForm = new AlbumForm();
         model.addAttribute("albumForm", albumForm);
+        model.addAttribute("categories", CATEGORIES);
         return "album/album-form";
     }
     /*フォームからの登録処理を受けるルーティング
@@ -72,6 +76,7 @@ album-list.html」を表示するという意味になります*/
         List<MusicViewModel> musics = musicService.selectMusicsWithFavorite(albumId, userDetails.getUserId());
         model.addAttribute("album", album);
         model.addAttribute("musics", musics);
+        model.addAttribute("categories", CATEGORIES);
         model.addAttribute("types", TYPES);
         return "album/album-detail";
     }
@@ -130,18 +135,4 @@ album-list.html」を表示するという意味になります*/
         return "redirect:/albums/" + albumId;
     }
     
-    @GetMapping("/sample1")
-    public String sample1() {
-       return "sample1";
-    }
-
-    @GetMapping("/sample2")
-    public String sample2() {
-       return "sample2";
-    }
-
-    @GetMapping("/sample3")
-    public String sample3() {
-       return "sample3";
-    }
 }

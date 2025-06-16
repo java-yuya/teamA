@@ -93,11 +93,11 @@
     <table class="table table-striped table-bordered w-75 mx-auto shadow">
       <thead>
         <tr class="text-center align-middle">
-          <th>ID</th>
+          <th>口座ID</th>
           <th>口座名義</th>
-          <th>リリース日</th>
-          <th>金額</th>
-          <th>曲数</th>
+          <th>口座種類</th>
+          <th>口座残高</th>
+          <th>履歴数</th>
           <th></th>
         </tr>
       </thead>
@@ -105,7 +105,7 @@
         <tr th:each="album : ${albums}" class="text-center align-middle">
           <td><span th:text="${album.albumId}">album id</span></td>
           <td><a th:href="@{/albums/{albumId}(albumId=${album.albumId})}"><span th:text="${album.title}">album title</span></a></td>
-          <td><span th:text="${album.artist}">album artist</span></td>
+          <td><span th:text="${categories[album.artist]}">album artist</span></td>
           <td><span th:text="${album.releaseDate}">album releaseDate</span></td>
           <td><span th:text="${album.musicCount}">album musicCount</span></td>
           <td>

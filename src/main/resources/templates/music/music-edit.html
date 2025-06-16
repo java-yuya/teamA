@@ -3,34 +3,39 @@
 <head th:replace="~{layout :: head(楽曲編集)}"></head>
 <body class="bg-danger-subtle">
     <div th:replace="~{layout :: header}"></div>
-    <br><br><br><br>
+    <br><br><br><br><br>
     <h3 class="text-center">楽曲編集</h3>
     <form th:action="@{/albums/{albumId}/musics/{musicId}/edit(albumId=${music.albumId}, musicId=${music.musicId})}"
        th:object="${music}"method="post" class="w-50 mx-auto mt-5 p-4 border rounded shadow bg-body">
         <div class="mb-3">
             <label for="title" class="form-label">タイトル：</label>
-            <input type="text" id="title" name="title" th:field="*{title}" class="form-control">
+            <input type="text" id="title" name="title" th:field="*{title}" class="form-control" style="height: 50px;">
         </div>
         <div class="mb-3">
             <label for="duration" class="form-label">日付：</label>
-            <input type="date" id="duration" name="duration" th:field="*{duration}" class="form-control">
+            <input type="date" id="duration" name="duration" th:field="*{duration}" class="form-control" style="height: 50px;">
         </div>
         <div class="mb-3">
             <label for="price" class="form-label">金額：</label>
-            <input type="text" id="price" name="price" th:field="*{price}" class="form-control">
+            <input type="text" id="price" name="price" th:field="*{price}" class="form-control" style="height: 50px;">
         </div>
         <div class="mb-3">
             <label for="method" class="form-label">収入・支出：</label>
-            <input type="text" id="method" name="method" th:field="*{method}" class="form-control">
+            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" style="height: 50px;">
+                <option selected>Open this select menu</option>
+                <option value="1">支出</option>
+                <option value="2">収入</option>
+            </select>
         </div>
         <div>
             <input type="hidden" name="musicId" th:field="*{musicId}">
         </div>
-        <button type="submit" class="btn btn-promary w-100">変更</button>
+        <button type="submit" class="btn btn-primary w-100">変更</button>
+        <div class="d-flex justify-content-center">
+          <a th:href="@{/albums/{albumId}(albumId=${music.albumId})}" class="btn btn-secondary mt-3 w-100">アルバムに戻る</a>
+        </div>
     </form>
-    <div class="d-flex justify-content-center">
-    <a th:href="@{/albums/{albumId}(albumId=${music.albumId})}" class="btn btn-secondary mt-3 w-auto">アルバムに戻る</a>
-    </div>
+    <br> <br> <br> <br> <br>
     <d ivth:replace="~{layout :: footer}"></div>
 </body>
 </html>

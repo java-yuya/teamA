@@ -9,19 +9,19 @@
     <form th:action="@{/albums/{albumId}/musics/new(albumId=${musicForm.albumId})}" method="post" class="w-50 mx-auto mt-5 p-4 border rounded shadow bg-body" th:object="${musicForm}">
         <div class="mb-3">
             <label for="title" class="form-label">タイトル：</label>
-            <input type="text" id="title" name="title" class="form-control" placeholder="タイトルを入力" th:field="*{title}">
+            <input type="text" id="title" name="title" class="form-control" placeholder="タイトルを入力" th:field="*{title}" style="height: 50px;">
         </div>
         <div class="mb-3">
             <label for="duration" class="form-label">日付：</label>
-            <input type="date" id="duration" name="duration" class="form-control" th:field="*{duration}">
+            <input type="date" id="duration" name="duration" class="form-control" th:field="*{duration}" style="height: 50px;">
         </div>  
         <div class="mb-3">
             <label for="price" class="form-label">金額：</label>
-            <input type="text" id="price" name="price" class="form-control" placeholder="金額を入力" th:field="*{price}">
+            <input type="text" id="price" name="price" class="form-control" placeholder="金額を入力" th:field="*{price}" style="height: 50px;">
         </div>
         <div class="mb-3">
             <label for="method" class="form-label">収入・支出：</label>
-            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" style="height: 50px;">
                 <option selected>Open this select menu</option>
                 <option value="1">支出</option>
                 <option value="2">収入</option>

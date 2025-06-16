@@ -23,6 +23,9 @@
         </div>
         <button type="submit" class="btn btn-primary w-100">追加</button>
    </form>
+   <!-- エラーメッセージの表示 -->
+    <div th:if="${error}" th:text="${error}" style="color: red;"></div>
+    <div th:replace="~{layout :: footer}"></div>
    <div th:replace="~{layout :: footer}"></div>
 </body>
 </html>

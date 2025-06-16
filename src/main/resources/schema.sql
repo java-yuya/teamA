@@ -1,7 +1,8 @@
 CREATE TABLE IF NOT EXISTS albums ( /**/
     album_id INTEGER AUTO_INCREMENT PRIMARY KEY, /*口座ID*/
     title VARCHAR(255) NOT NULL, /*カテゴリ*/
-    artist INTEGER NOT NULL, /**/
+    artist INTEGER NOT NULL,
+    check(artist in(0, 1)),
     release_date INTEGER NOT NULL, /*金額*/
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

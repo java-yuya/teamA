@@ -7,6 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import java.util.List;
 import com.example.music_management.form.AlbumForm;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -62,7 +65,13 @@ album-list.html」を表示するという意味になります*/
      * 
     */
     @PostMapping("/new")
-    public String createAlbum(AlbumForm albumForm) {
+    public String createAlbum(AlbumForm albumForm,
+                            @RequestParam("title") String title,
+                            RedirectAttributes redirectAttributes) {
+        if (title.trim().isEmpty()) {
+            redirectAttributes.addFlashAttribute("error", "口座名は空白にできません");
+            return "redirect:/albums/new";
+        }
         albumService.createAlbum(albumForm);
         return "redirect:/albums";
     }

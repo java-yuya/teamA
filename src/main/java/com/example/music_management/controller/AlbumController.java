@@ -105,7 +105,13 @@ album-list.html」を表示するという意味になります*/
     }
 
     @PostMapping("/{albumId}/edit")
-    public String updateAlbum(@PathVariable long albumId, Album album) {
+    public String updateAlbum(@PathVariable long albumId, Album album,
+                                @RequestParam("title") String title,
+                                RedirectAttributes redirectAttributes) {
+        if (title.trim().isEmpty()) {
+            redirectAttributes.addFlashAttribute("error", "口座名は空白にできません");
+            return "redirect:/albums/{albumId}/edit";
+        }
         albumService.updateAlbum(albumId, album);
         return "redirect:/albums";
     }

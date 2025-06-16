@@ -23,11 +23,11 @@
         <td th:text="${album.title}"></td>
     </tr>
     <tr>
-        <th class="table-light">金額</th>
-        <td th:text="${album.artist}"></td>
+        <th class="table-light">口座種類</th>
+        <td th:text="${categories[album.artist]}"></td>
     </tr>
     <tr>
-        <th class="table-light">カテゴリ</th>
+        <th class="table-light">口座残高</th>
         <td th:text="${album.releaseDate}"></td>
     </tr>
     <tr>
@@ -42,9 +42,9 @@
     <theed class="table-light">
     <tr>
         <th>お気に入り</th>
-        <th>楽曲ID</th>
-        <th>タイトル</th>
-        <th>再生時間</th>
+        <th>収支ID</th>
+        <th>内容</th>
+        <th>日付</th>
         <th>金額</th>
         <th>収入・支出</th>
         <th></th>

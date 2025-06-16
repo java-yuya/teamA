@@ -10,6 +10,6 @@ public class MusicForm {
     private String title;
     private LocalDate duration;
     private int price;
-    private String method;
+    private int method;
     private long albumId;
 }

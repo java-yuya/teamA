@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 public class Album {
     private long albumId;
     private String title;
-    private String artist;
+    private int artist;
     //日付型のフォーマットを指定yyyy-MM-dd にしておくことで <form> タグの type 属性 date とフォーマットを統一
     //@DateTimeFormat(pattern = "yyyy-MM-dd")
     private int releaseDate;

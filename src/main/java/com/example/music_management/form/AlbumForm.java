@@ -9,6 +9,6 @@ import lombok.Data;
 public class AlbumForm {
     //入力された値を格納する変数
     private String title;
-    private String artist;
+    private int artist;
     private int releaseDate;
 }

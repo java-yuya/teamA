@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS musics (
     duration DATE, /*日付*/
     price INTEGER,
     method INTEGER,
-    check(category in(0, 1)),
+    check(method in(0, 1)),
     album_id INTEGER NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (album_id) REFERENCES albums(album_id) ON DELETE CASCADE

@@ -3,11 +3,11 @@
 <head th:replace="~{layout :: head(ログイン)}"></head>
 <body class="bg-danger-subtle">
     <div th:replace="~{layout :: header}"></div>
-    <div class="w-50 mx-auto mt-4" style="padding-top: 100px;">
-        <div class="alert alert-danger" th:if="${param.error}">
+    <div class="w-25 mx-auto mt-4" style="padding-top: 100px;">
+        <div class="alert alert-danger text-center" th:if="${param.error}">
             ユーザ名、またはパスワードが違います
         </div>
-        <div class="alert alert-into" th:if="${param.register}">
+        <div class="alert alert-into text-center" th:if="${param.register}">
             登録に成功しました
         </div>
     </div>

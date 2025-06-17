@@ -3,7 +3,12 @@
 <head th:replace="~{layout :: head(アルバム一覧)}"></head>
 <body class="bg-danger-subtle">
     <div th:replace="~{layout :: header}"></div>
-    <br><br><br><br>
+    <br>
+       <div class="d-flex justify-content-center" style="padding-top: 100px;">
+    <div th:if="${error}" class="alert alert-danger text-center w-25" style="color: red;">
+        <span th:text="${error}"></span>
+    </div>
+</div>
     <h3 class="text-center">アルバム登録</h3>
     <form th:action="@{/albums/new}" method="post" class="w-50 mx-auto mt-5 p-4 border rounded shadow bg-body" th:object="${albumForm}">
         <div class="mb-3">
@@ -25,7 +30,7 @@
         <a th:href="@{/albums}" class="btn btn-secondary mt-3 w-100">一覧に戻る</a>
    </form>
    <!-- エラーメッセージの表示 -->
-    <div th:if="${error}" th:text="${error}" style="color: red;"></div>
+    <br><br>
     <div th:replace="~{layout :: footer}"></div>
 </body>
 </html>

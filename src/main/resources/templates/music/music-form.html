@@ -4,11 +4,9 @@
 <body class="bg-danger-subtle">
     <div th:replace="~{layout :: header}"></div>
     <div class="p-5"></div>
- 
-
-    <form th:action="@{/albums/{albumId}/musics/new(albumId=${musicForm.albumId})}" method="post" class="w-50 mx-auto mt-5 p-4 border rounded shadow bg-body" th:object="${musicForm}">
+    <form th:action="@{/albums/{albumId}/musics/new(albumId=${musicForm.albumId})}" method="post" class="w-50 mx-auto mt-4 p-4 border rounded shadow bg-body" th:object="${musicForm}">
         <div class="mb-3">
-            <label for="title" class="form-label">タイトル：</label>
+            <label for="title" class="form-label">内容：</label>
             <input type="text" id="title" name="title" class="form-control" placeholder="タイトルを入力" th:field="*{title}" style="height: 50px;">
         </div>
         <div class="mb-3">
@@ -21,7 +19,7 @@
         </div>
         <div class="mb-3">
             <label for="method" class="form-label">収支：</label>
-            <select th:field="*{method}" id="method" name="method" class="form-control" placeholder="収支を選択">
+            <select th:field="*{method}" id="method" name="method" class="form-control" placeholder="収支を選択" style="height: 50px;">
                 <option value="0" selected>収入</option>
                 <option value="1">支出</option>
             </select>
@@ -30,11 +28,9 @@
             <input type="hidden" name="albumId" th:field="*{albumId}">
         </div>
         <button type="submit" class="btn btn-primary w-100">追加</button>
-        <a th:href="@{/albums/{albumId}(albumId=*{albumId})}" class="btn btn-secondary mt-3 w-100 justify-content-center">アルバム詳細に戻る</a>
+        <a th:href="@{/albums/{albumId}(albumId=*{albumId})}" class="btn btn-secondary mt-3 w-100 justify-content-center">口座詳細に戻る</a>
     </form>
     <div th:replace="~{layout :: footer}"></div>
-
-      <div class="py-5"></div>
-      <div class="p-3"></div>
+    <div class="py-4"></div>
 </body>
 </html>

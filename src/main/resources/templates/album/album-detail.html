@@ -11,6 +11,7 @@
 </div>
 <div class="p-3"></div>
 <h3 class="text-center">口座詳細</h3>
+<div class="p-2"></div>
 <table class="table table-bordered w-50 shadow text-center mx-auto">
     <!-- <table class="table-light table-striped table-bordered w-75 mx-auto shadow text-center"> -->
 
@@ -36,8 +37,8 @@
     </tr>
 </table>
 <br>
-<br>
-<h3 class="text-center">履歴一覧</h3>
+<h3 class="text-center p-">履歴一覧</h3>
+<div class="p-2"></div>
 <table class="table-light table-striped table-bordered w-75 mx-auto shadow text-center bg-body">
     <theed class="table-light">
     <tr>
@@ -81,6 +82,7 @@
         </td>
     </tr>
 </table>
+<div class="p-1"></div>
 <div class="d-flex justify-content-center gap-3">
 <a th:href="@{/albums/{albumId}/musics/new(albumId=${album.albumId})}" class="btn btn-primary mt-3 w-25">収入・支出を追加</a>
 <a th:href="@{/albums}" class="btn btn-secondary mt-3 w-25">一覧に戻る</a>

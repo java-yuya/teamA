@@ -7,7 +7,7 @@
     <form th:action="@{/albums/{albumId}/musics/new(albumId=${musicForm.albumId})}" method="post" class="w-50 mx-auto mt-4 p-4 border rounded shadow bg-body" th:object="${musicForm}">
         <div class="mb-3">
             <label for="title" class="form-label">内容：</label>
-            <input type="text" id="title" name="title" class="form-control" placeholder="タイトルを入力" th:field="*{title}" style="height: 50px;">
+            <input type="text" id="title" name="title" class="form-control" placeholder="内容を入力" th:field="*{title}" style="height: 50px;">
         </div>
         <div class="mb-3">
             <label for="duration" class="form-label">決済日：</label>

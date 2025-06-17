@@ -20,6 +20,8 @@ import com.example.music_management.form.MusicForm;
 import com.example.music_management.viewmodel.AlbumViewModel;
 import com.example.music_management.security.CustomUserDetails;
 import com.example.music_management.viewmodel.MusicViewModel;
+
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 @Controller
@@ -129,7 +131,7 @@ album-list.html」を表示するという意味になります*/
     @PostMapping("/{albumId}/musics/new")
     public String createMusic(@PathVariable long albumId, MusicForm musicForm,
                                 @RequestParam("title") String title,
-                                @RequestParam("duration") LocalDate duration,
+                                @RequestParam(value = "duration", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate duration,
                                 RedirectAttributes redirectAttributes) {
         if (title.trim().isEmpty() || duration == null) {
             redirectAttributes.addFlashAttribute("error", "内容と決済日は空白にできません");
@@ -155,7 +157,7 @@ album-list.html」を表示するという意味になります*/
     @PostMapping("/{albumId}/musics/{musicId}/edit")
     public String updateMusic(@PathVariable long albumId, @PathVariable long musicId, Music music,
                                 @RequestParam("title") String title,
-                                @RequestParam("duration") LocalDate duration,
+                                @RequestParam(value = "duration", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate duration,
                                 RedirectAttributes redirectAttributes) {
         if (title.trim().isEmpty() || duration == null) {
             redirectAttributes.addFlashAttribute("error", "内容と決済日は空白にできません");

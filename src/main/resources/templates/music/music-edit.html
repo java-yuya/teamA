@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{layout :: head(楽曲編集)}"></head>
+<head th:replace="~{layout :: head(収支編集)}"></head>
 <body class="bg-danger-subtle">
     <div th:replace="~{layout :: header}"></div>
-    <br><br><br><br>
-    <h3 class="text-center">楽曲編集</h3>
+    <br><br><br><br><br>
+    <h3 class="text-center">収支編集</h3>
     <form th:action="@{/albums/{albumId}/musics/{musicId}/edit(albumId=${music.albumId}, musicId=${music.musicId})}"
        th:object="${music}"method="post" class="w-50 mx-auto mt-2 p-4 border rounded shadow bg-body">
         <div class="mb-3">
@@ -12,7 +12,7 @@
             <input type="text" id="title" name="title" th:field="*{title}" class="form-control" style="height: 50px;">
         </div>
         <div class="mb-3">
-            <label for="duration" class="form-label">日付：</label>
+            <label for="duration" class="form-label">決済日：</label>
             <input type="date" id="duration" name="duration" th:field="*{duration}" class="form-control" style="height: 50px;">
         </div>
         <div class="mb-3">

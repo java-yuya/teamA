@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{layout :: head(楽曲登録)}"></head>
+<head th:replace="~{layout :: head(収支登録)}"></head>
 <body class="bg-danger-subtle">
     <div th:replace="~{layout :: header}"></div>
     <div class="p-5"></div>
@@ -10,7 +10,7 @@
             <input type="text" id="title" name="title" class="form-control" placeholder="タイトルを入力" th:field="*{title}" style="height: 50px;">
         </div>
         <div class="mb-3">
-            <label for="duration" class="form-label">日付：</label>
+            <label for="duration" class="form-label">決済日：</label>
             <input type="date" id="duration" name="duration" class="form-control" th:field="*{duration}" style="height: 50px;">
         </div>  
         <div class="mb-3">

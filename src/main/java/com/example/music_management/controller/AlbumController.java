@@ -153,7 +153,14 @@ album-list.html」を表示するという意味になります*/
     }
 
     @PostMapping("/{albumId}/musics/{musicId}/edit")
-    public String updateMusic(@PathVariable long albumId, @PathVariable long musicId, Music music) {
+    public String updateMusic(@PathVariable long albumId, @PathVariable long musicId, Music music,
+                                @RequestParam("title") String title,
+                                @RequestParam("duration") LocalDate duration,
+                                RedirectAttributes redirectAttributes) {
+        if (title.trim().isEmpty() || duration == null) {
+            redirectAttributes.addFlashAttribute("error", "内容と決済日は空白にできません");
+            return "redirect:/albums/{albumId}/musics/{musicId}/edit";
+        }
         musicService.updateMusic(musicId, music);
         return "redirect:/albums/" + albumId;
     }

@@ -34,6 +34,8 @@
           <a th:href="@{/albums/{albumId}(albumId=${music.albumId})}" class="btn btn-secondary mt-3 w-100">アルバムに戻る</a>
         </div>
     </form>
+    <!-- エラーメッセージの表示 -->
+    <div th:if="${error}" th:text="${error}" style="color: red;"></div>
     <br>
     <d ivth:replace="~{layout :: footer}"></div>
 </body>

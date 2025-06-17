@@ -1,16 +1,14 @@
 package com.example.music_management.service;
 
+import com.example.music_management.exception.BalanceMissingException;
 import com.example.music_management.entity.Music;
 import com.example.music_management.repository.MusicRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import com.example.music_management.form.MusicForm;
-import com.example.music_management.viewmodel.MusicViewModel;
-import com.example.music_management.exception.AlbumNotFoundException;
 import com.example.music_management.entity.Album;
 import com.example.music_management.repository.AlbumRepository;
 import org.springframework.transaction.annotation.Transactional;
-import com.example.music_management.exception.MusicNotFoundException;
 
 @Service
 public class MusicService {
@@ -22,7 +20,7 @@ public class MusicService {
         this.albumRepository = albumRepository;
     }
 
-    public List<Music> getMusicsByAlbumId(long albumId) {
+    /*public List<Music> getMusicsByAlbumId(long albumId) {
         return musicRepository.getMusicsByAlbumId(albumId);
     }
 
@@ -62,9 +60,55 @@ public class MusicService {
             throw new  MusicNotFoundException("Music ID does not match", music.getAlbumId());
         }
         musicRepository.updateMusic(music);
+    }*/
+
+        // 口座ごとに支出情報を取り出す
+    public List<Music> getMusicsByAlbumId(long albumId) {
+        return musicRepository.getMusicsByAlbumId(albumId);
     }
 
-    public List<MusicViewModel> selectMusicsWithFavorite(long albumId, long userId) {
-        return musicRepository.selectMusicsWithFavorite(albumId, userId);
+    // 口座ごとの収入を取得
+    public List<Music> getBsByAlbumId(long albumId) {
+        return musicRepository.getBsByAlbumId(albumId);
+    }
+
+    // 口座ごとの収入の合計を取得
+    public Integer getBSumByAlbumId(long albumId) {
+        return musicRepository.getBSumByAlbumId(albumId);
+    }
+
+    // 口座ごとの支出を取得
+    public List<Music> getPsByAlbumId(long albumId) {
+        return musicRepository.getPsByAlbumId(albumId);
+    }
+
+    // 口座ごとの支出の合計を取得
+    public Integer getPSumByAlbumId(long albumId) {
+        return musicRepository.getPSumByAlbumId(albumId);
+    }
+
+    // 口座に収支を追加
+    public void createMusic(MusicForm musicForm, long albumId) {
+        Music music = new Music();
+        if (musicForm.getTitle() == 1 && albumRepository.getBalanceById(albumId) - musicForm.getPrice() < 0) {
+        throw new BalanceMissingException("Balance Missing!", albumId);
+        }
+        music.setTitle(musicForm.getTitle());
+        music.setPrice(musicForm.getPrice());
+        music.setAlbumId(albumId);
+        musicRepository.insertMusic(music);
+    }
+
+    // 収支を削除
+    public void deleteMusicById(long musicId, long albumId) {
+        if (getMusicById(musicId).getTitle() == 0 && (getPSumByAlbumId(albumId) != null ? getPSumByAlbumId(musicId) : 0) > getBSumByAlbumId(albumId) - getMusicById(musicId).getPrice()) {
+        throw new BalanceMissingException("Balance Missing!", albumId);
+        }
+        musicRepository.deleteMusicById(musicId);
+    }
+
+    // 収支IDで金額を取得
+    public Music getMusicById(long musicId) {
+        return musicRepository.getMusicById(musicId);
     }
 }

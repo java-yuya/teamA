@@ -51,7 +51,6 @@
     </tr>
     </theed>
     <tr th:each="music : ${musics}">
-        <td><span th:text="${music.isFavorite ? '☆' : ''}">☆</span></td>
         <td><span th:text="${music.musicId}">music id</span></td>
         <td><span th:text="${music.title}">music title</span></td>
         <td><span th:text="${#temporals.format(music.duration, 'yyyy-MM-dd')}">music duration</span></td>
@@ -66,16 +65,6 @@
             <form th:action="@{/albums/{albumId}/musics/{musicId}/delete(albumId=${album.albumId}, musicId=${music.musicId})}"
                 method="post">
                 <button type="submit" class="btn btn-outline-danger btn-sm mx-2" onclick="return confirm('本当に削除しますか？');">削除</button>
-            </form>
-            <form th:if="${music.isFavorite}" th:action="@{/favorites/delete}" method="post">
-                <input type="hidden" name="musicId" th:value="${music.musicId}">
-                <input type="hidden" name="albumId" th:value="${album.albumId}">
-                <button type="submit" class="btn btn-outline-danger btn-sm mx-2">お気に入り解除 </button>
-            </form>
-            <form th:unless="${music.isFavorite}" th:action="@{/favorites}" method="post">
-                <input type="hidden" name="musicId" th:value="${music.musicId}">
-                <input type="hidden" name="albumId" th:value="${album.albumId}">
-                <button type="submit" class="btn btn-outline-primary btn-sm mx-2">お気に入り</button>
             </form>
             </div>
         </td>

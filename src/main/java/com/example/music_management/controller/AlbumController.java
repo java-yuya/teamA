@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane.TitlePaneLayout;
@@ -21,6 +22,9 @@ import com.example.music_management.entity.Music;
 import com.example.music_management.service.MusicService;
 import com.example.music_management.form.MusicForm;
 import com.example.music_management.security.CustomUserDetails;
+import com.example.music_management.viewmodel.MusicViewModel;
+
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 @Controller
@@ -147,9 +151,16 @@ public class AlbumController {
 
     // 口座に収支を追加
     @PostMapping("/{albumId}/musics/new")
-    public String createMusic(@PathVariable long albumId, MusicForm musicForm) {
-        musicService.createMusic(musicForm, albumId);
-        return "redirect:/album/" + albumId;
+    public String createMusic(@PathVariable long albumId, MusicForm musicForm,
+                                @RequestParam("title") String title,
+                                @RequestParam(value = "duration", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate duration,
+                                RedirectAttributes redirectAttributes) {
+        if (title.trim().isEmpty() || duration == null) {
+            redirectAttributes.addFlashAttribute("error", "内容と決済日は空白にできません");
+            return "redirect:/albums/{albumId}/musics/new";
+        }
+        musicService.createMusic(musicForm);
+        return "redirect:/albums/" + albumId;
     }
 
     // 収支を削除
@@ -158,4 +169,25 @@ public class AlbumController {
         musicService.deleteMusicById(musicId, albumId);
         return "redirect:/album/" + albumId;
     }
+
+    @GetMapping("/{albumId}/musics/{musicId}/edit")
+    public String editMusic(@PathVariable long albumId, @PathVariable long musicId, Model model) {
+        Music music = musicService.getMusicById(musicId);
+        model.addAttribute("music", music);
+        return "music/music-edit";
+    }
+
+    @PostMapping("/{albumId}/musics/{musicId}/edit")
+    public String updateMusic(@PathVariable long albumId, @PathVariable long musicId, Music music,
+                                @RequestParam("title") String title,
+                                @RequestParam(value = "duration", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate duration,
+                                RedirectAttributes redirectAttributes) {
+        if (title.trim().isEmpty() || duration == null) {
+            redirectAttributes.addFlashAttribute("error", "内容と決済日は空白にできません");
+            return "redirect:/albums/{albumId}/musics/{musicId}/edit";
+        }
+        musicService.updateMusic(musicId, music);
+        return "redirect:/albums/" + albumId;
+    }
+    
 }

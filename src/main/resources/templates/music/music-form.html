@@ -3,8 +3,14 @@
 <head th:replace="~{layout :: head(収支登録)}"></head>
 <body class="bg-danger-subtle">
     <div th:replace="~{layout :: header}"></div>
-    <div class="p-5"></div>
-    <form th:action="@{/albums/{albumId}/musics/new(albumId=${musicForm.albumId})}" method="post" class="w-50 mx-auto mt-4 p-4 border rounded shadow bg-body" th:object="${musicForm}">
+    <div class="p-1"></div>
+     <!-- エラーメッセージの表示 -->
+    <div class="d-flex justify-content-center" style="padding-top: 100px;">
+    <div th:if="${error}" class="alert alert-danger text-center w-25" style="color: red;">
+        <span th:text="${error}"></span>
+    </div>
+    </div>
+    <form th:action="@{/albums/{albumId}/musics/new(albumId=${musicForm.albumId})}" method="post" class="w-50 mx-auto mt-1 p-4 border rounded shadow bg-body" th:object="${musicForm}">
         <div class="mb-3">
             <label for="title" class="form-label">内容：</label>
             <input type="text" id="title" name="title" class="form-control" placeholder="内容を入力" th:field="*{title}" style="height: 50px;">

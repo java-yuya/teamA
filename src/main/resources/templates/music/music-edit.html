@@ -3,8 +3,14 @@
 <head th:replace="~{layout :: head(収支編集)}"></head>
 <body class="bg-danger-subtle">
     <div th:replace="~{layout :: header}"></div>
-    <br><br><br><br><br>
-    <h3 class="text-center">収支編集</h3>
+    <div class="p-2"></div>
+     <!-- エラーメッセージの表示 -->
+    <div class="d-flex justify-content-center" style="padding-top: 100px;">
+    <div th:if="${error}" class="alert alert-danger text-center w-25" style="color: red;">
+        <span th:text="${error}"></span>
+    </div>
+    </div>
+    <h3 class="text-center p-2">収支編集</h3>
     <form th:action="@{/albums/{albumId}/musics/{musicId}/edit(albumId=${music.albumId}, musicId=${music.musicId})}"
        th:object="${music}"method="post" class="w-50 mx-auto mt-2 p-4 border rounded shadow bg-body">
         <div class="mb-3">
@@ -34,9 +40,7 @@
           <a th:href="@{/albums/{albumId}(albumId=${music.albumId})}" class="btn btn-secondary mt-3 w-100">アルバムに戻る</a>
         </div>
     </form>
-    <!-- エラーメッセージの表示 -->
-    <div th:if="${error}" th:text="${error}" style="color: red;"></div>
-    <br>
+    <br><br><br><br>
     <d ivth:replace="~{layout :: footer}"></div>
 </body>
 </html>

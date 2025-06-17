@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{layout :: head(アルバム編集)}"></head>
+<head th:replace="~{layout :: head(口座編集)}"></head>
 <body class="bg-danger-subtle">
     <div th:replace="~{layout :: header}"></div>
-    <br><br><br><br>
-    <h3 class="text-center">アルバム編集</h3>
+    <br>
+    <div class="d-flex justify-content-center" style="padding-top: 100px;">
+    <div th:if="${error}" class="alert alert-danger text-center w-25" style="color: red;">
+        <span th:text="${error}"></span>
+    </div>
+    </div>
+    <h3 class="text-center">口座編集</h3>
     <form th:action="@{/albums/{albumId}/edit(albumId=${album.albumId})}" th:object="${album}" method="post" class="w-50 mx-auto mt-5 p-4 border rounded shadow bg-body">
         <div class="mb-3">
             <label for="title" class="form-label">口座名：</label>
             <input type="text" id="title" name="title" class="form-control" th:field="*{title}">
         </div>
         <div class="mb-3">
-            <label for="artist" class="form-label">カテゴリー：</label>
-            <input type="text" id="artist" name="artist" class="form-control" th:field="*{artist}">
+            <label for="artist" class="form-label">口座種類：</label>
+            <select th:field="*{artist}" id="artist" name="artist" class="form-control" placeholder="口座種類を選択">
+                <option value="0" selected>普通預金</option>
+                <option value="1">定期預金</option>
+            </select>
         </div>
         <div class="mb-3">
             <label for="release-date" class="form-label">金額：</label>
@@ -21,6 +29,7 @@
         <button type="submit" class="btn btn-primary w-100">変更</button>
         <a th:href="@{/albums}" class="btn btn-secondary mt-3 w-100">一覧に戻る</a>
     </form>
+    <br><br>
     <div th:replace="~{layout :: footer}"></div>
  </body>
  </html>

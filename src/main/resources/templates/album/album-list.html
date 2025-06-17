@@ -1,61 +1,18 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
-  <head th:replace="~{layout :: head(アルバム一覧)}">
+  <head th:replace="~{layout :: head(口座一覧)}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   </head>
-  <body class ="bg-danger-subtle">
+  <body class ="bg-danger-subtle" style="overflow-x: hidden;">
     <div th:replace="~{layout :: header}"></div>
-    <div class="w-50 mx-auto mt-4 mb-5">
+    <div class="w-75 mx-auto mt-4 mb-5">
       <div th:if="${error}" th:text="${error}" class="alert alert-danger" >sample message</div>
     </div>
-
-
-
-    <!--사진슬라이드 추가-->
-    <!--
-    <div id="carouselExampleCaptions" class="carousel slide">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="..." class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>First slide label</h5>
-        <p>Some representative placeholder content for the first slide.</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="..." class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Second slide label</h5>
-        <p>Some representative placeholder content for the second slide.</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="..." class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>Some representative placeholder content for the third slide.</p>
-      </div>
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
--->
+    <br>
 
     
     <!--収支、収益、支出ボックス-->
-    <div class="mt-5 p-5 mb-5 text-center rounded-3 ">
+    <div class="mt-5  mb-5 text-center rounded-3 ">
     <div class="p-4"></div>
     <div class="row justify-content-center">
       <div class="col-sm-3 mb-6">
@@ -93,11 +50,11 @@
     <table class="table table-striped table-bordered w-75 mx-auto shadow">
       <thead>
         <tr class="text-center align-middle">
-          <th>ID</th>
+          <th>口座ID</th>
           <th>口座名義</th>
-          <th>金額</th>
-          <th>リリース日</th>
-          <th>曲数</th>
+          <th>口座種類</th>
+          <th>口座残高</th>
+          <th>履歴数</th>
           <th></th>
         </tr>
       </thead>
@@ -105,7 +62,7 @@
         <tr th:each="album : ${albums}" class="text-center align-middle">
           <td><span th:text="${album.albumId}">album id</span></td>
           <td><a th:href="@{/albums/{albumId}(albumId=${album.albumId})}"><span th:text="${album.title}">album title</span></a></td>
-          <td><span th:text="${album.artist}">album artist</span></td>
+          <td><span th:text="${categories[album.artist]}">album artist</span></td>
           <td><span th:text="${album.releaseDate}">album releaseDate</span></td>
           <td><span th:text="${album.musicCount}">album musicCount</span></td>
           <td>
@@ -126,5 +83,6 @@
 
     </form>
     <div th:replace="~{layout :: footer}"></div>
+  <br><br>
   </body>
 </html>

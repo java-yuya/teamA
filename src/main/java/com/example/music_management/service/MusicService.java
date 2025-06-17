@@ -90,7 +90,7 @@ public class MusicService {
     // 口座に収支を追加
     public void createMusic(MusicForm musicForm, long albumId) {
         Music music = new Music();
-        if (musicForm.getTitle() == 1 && albumRepository.getBalanceById(albumId) - musicForm.getPrice() < 0) {
+        if (musicForm.getMethod() == 1 && albumRepository.getBalanceById(albumId) - musicForm.getPrice() < 0) {
         throw new BalanceMissingException("Balance Missing!", albumId);
         }
         music.setTitle(musicForm.getTitle());
@@ -101,7 +101,7 @@ public class MusicService {
 
     // 収支を削除
     public void deleteMusicById(long musicId, long albumId) {
-        if (getMusicById(musicId).getTitle() == 0 && (getPSumByAlbumId(albumId) != null ? getPSumByAlbumId(musicId) : 0) > getBSumByAlbumId(albumId) - getMusicById(musicId).getPrice()) {
+        if (getMusicById(musicId).getMethod() == 0 && (getPSumByAlbumId(albumId) != null ? getPSumByAlbumId(musicId) : 0) > getBSumByAlbumId(albumId) - getMusicById(musicId).getPrice()) {
         throw new BalanceMissingException("Balance Missing!", albumId);
         }
         musicRepository.deleteMusicById(musicId);

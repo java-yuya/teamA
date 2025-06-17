@@ -10,11 +10,11 @@ import java.time.LocalDateTime;
 @Data
 public class Music{
     private long musicId;
-    private int title;
+    private String title;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate duration;
     private int price;
-    private String method;
+    private int method;
     private long albumId;
     private LocalDateTime createdAt;
 }

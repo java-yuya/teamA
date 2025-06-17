@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{layout :: head(アルバム詳細)}">
+<head th:replace="~{layout :: head(口座詳細)}">
 </head>
 <body class="bg-danger-subtle">
 <div th:replace="~{layout :: header}"></div>
@@ -11,6 +11,7 @@
 </div>
 <div class="p-3"></div>
 <h3 class="text-center">口座詳細</h3>
+<div class="p-2"></div>
 <table class="table table-bordered w-50 shadow text-center mx-auto">
     <!-- <table class="table-light table-striped table-bordered w-75 mx-auto shadow text-center"> -->
 
@@ -23,11 +24,11 @@
         <td th:text="${album.title}"></td>
     </tr>
     <tr>
-        <th class="table-light">金額</th>
-        <td th:text="${album.artist}"></td>
+        <th class="table-light">口座種類</th>
+        <td th:text="${categories[album.artist]}"></td>
     </tr>
     <tr>
-        <th class="table-light">カテゴリ</th>
+        <th class="table-light">口座残高</th>
         <td th:text="${album.releaseDate}"></td>
     </tr>
     <tr>
@@ -36,17 +37,16 @@
     </tr>
 </table>
 <br>
-<br>
-<h3 class="text-center">履歴一覧</h3>
+<h3 class="text-center p-">履歴一覧</h3>
+<div class="p-2"></div>
 <table class="table-light table-striped table-bordered w-75 mx-auto shadow text-center bg-body">
     <theed class="table-light">
     <tr>
-        <th>お気に入り</th>
-        <th>楽曲ID</th>
-        <th>タイトル</th>
-        <th>再生時間</th>
+        <th>収支ID</th>
+        <th>内容</th>
+        <th>決済日</th>
         <th>金額</th>
-        <th>収入・支出</th>
+        <th>収支</th>
         <th></th>
     </tr>
     </theed>
@@ -55,7 +55,7 @@
         <td><span th:text="${music.title}">music title</span></td>
         <td><span th:text="${#temporals.format(music.duration, 'yyyy-MM-dd')}">music duration</span></td>
         <td><span th:text="${music.price}">music price</span></td>
-        <td><span th:text="${music.method}">music method</span></td>
+        <td><span th:text="${types[music.method]}">music method</span></td>
         <td>
             <div class="d-flex justify-content-center">
             <form th:action="@{/albums/{albumId}/musics/{musicId}/edit(albumId=${album.albumId}, musicId=${music.musicId})}"
@@ -70,10 +70,12 @@
         </td>
     </tr>
 </table>
+<div class="p-1"></div>
 <div class="d-flex justify-content-center gap-3">
 <a th:href="@{/albums/{albumId}/musics/new(albumId=${album.albumId})}" class="btn btn-primary mt-3 w-25">収入・支出を追加</a>
 <a th:href="@{/albums}" class="btn btn-secondary mt-3 w-25">一覧に戻る</a>
 </div>
+<br><br><br><br>
 <div th:replace="~{layout :: footer}"></div>
 </body>
 </html>

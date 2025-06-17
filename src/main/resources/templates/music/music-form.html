@@ -30,6 +30,8 @@
         <button type="submit" class="btn btn-primary w-100">追加</button>
         <a th:href="@{/albums/{albumId}(albumId=*{albumId})}" class="btn btn-secondary mt-3 w-100 justify-content-center">口座詳細に戻る</a>
     </form>
+    <!-- エラーメッセージの表示 -->
+    <div th:if="${error}" th:text="${error}" style="color: red;"></div>
     <div th:replace="~{layout :: footer}"></div>
     <div class="py-4"></div>
 </body>

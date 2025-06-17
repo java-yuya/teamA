@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS albums ( /**/
 CREATE TABLE IF NOT EXISTS musics (
     music_id INTEGER AUTO_INCREMENT PRIMARY KEY, 
     title VARCHAR(255) NOT NULL,
-    duration DATE NOT NULL, /*日付*/
+    duration DATE, /*日付*/
     price INTEGER NOT NULL,
     method INTEGER NOT NULL,
     check(method in(0, 1)),

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.time.LocalDate;
 import java.util.List;
 import com.example.music_management.form.AlbumForm;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -126,7 +127,14 @@ album-list.html」を表示するという意味になります*/
     }
 
     @PostMapping("/{albumId}/musics/new")
-    public String createMusic(@PathVariable long albumId, MusicForm musicForm) {
+    public String createMusic(@PathVariable long albumId, MusicForm musicForm,
+                                @RequestParam("title") String title,
+                                @RequestParam("duration") LocalDate duration,
+                                RedirectAttributes redirectAttributes) {
+        if (title.trim().isEmpty() || duration == null) {
+            redirectAttributes.addFlashAttribute("error", "内容と決済日は空白にできません");
+            return "redirect:/albums/{albumId}/musics/new";
+        }
         musicService.createMusic(musicForm);
         return "redirect:/albums/" + albumId;
     }

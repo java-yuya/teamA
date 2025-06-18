@@ -13,9 +13,10 @@
     </div>
     <h3 class="text-center">ログイン</h3>
     <form th:action="@{/login}" method="post" class="w-25 mx-auto mt-4 p-4 border rounded shadow bg-body">
+        <div class="d-flex justify-content-center">
+            <img src="/images/kakeibo.png" class="w-75">
+        </div>
         <div class = "p-2"></div>
-        <img src ="/images/kakeibo.png" class = "w-100">
-        <div class = "p-4"></div>
         <div class="mb-3">
             <label for="username" class="form-label">ユーザ名：</label>
             <input type="text" id="username" name="username" class="form-control" placeholder="ユーザー名を入力">

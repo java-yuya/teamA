@@ -25,7 +25,7 @@
     </tr>
     <tr>
         <th class="table-light">口座種類</th>
-        <td th:text="${categories[album.artist]}"></td>
+        <td th:text="${artist[album.artist]}"></td>
     </tr>
     <tr>
         <th class="table-light">口座残高</th>
@@ -50,12 +50,12 @@
         <th></th>
     </tr>
     </theed>
-    <tr th:each="music : ${musics}">
+    <tr th:each="music : ${musicList}">
         <td><span th:text="${music.musicId}">music id</span></td>
         <td><span th:text="${music.title}">music title</span></td>
         <td><span th:text="${#temporals.format(music.duration, 'yyyy-MM-dd')}">music duration</span></td>
         <td><span th:text="${music.price}">music price</span></td>
-        <td><span th:text="${types[music.method]}">music method</span></td>
+        <td><span th:text="${method[music.method]}">music method</span></td>
         <td>
             <div class="d-flex justify-content-center">
             <form th:action="@{/albums/{albumId}/musics/{musicId}/edit(albumId=${album.albumId}, musicId=${music.musicId})}"

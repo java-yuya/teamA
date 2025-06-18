@@ -20,7 +20,7 @@
           <div class="card-body py-2">
             <i class="bi bi-piggy-bank-fill" style="font-size: 5rem; color: #20C997;"></i>
             <h5 class="card-title">収支</h5>
-            <p class="card-text">ここに収支を記載する</p>
+            <p th:text=${bop} class "card-text"></p>
           </div>
         </div>
       </div>
@@ -29,7 +29,7 @@
           <div class="card-body py-2">
             <i class="bi bi-arrow-up-circle-fill" style="font-size: 5rem; color: #339AF0;"></i>
             <h5 class="card-title">収益</h5>
-            <p class="card-text">ここに収益を記載する</p>
+            <p th:text=${bSum} class "card-text"></p>
           </div>
         </div>
       </div>
@@ -38,7 +38,7 @@
           <div class="card-body py-2">
             <i class="bi bi-arrow-down-circle-fill" style="font-size: 5rem; color: #F06595;"></i>
             <h5 class="card-title">支出</h5>
-            <p class="card-text">ここに支出を記載する</p>
+            <p th:text=${pSum} class "card-text"></p>
           </div>
         </div>
       </div>
@@ -54,22 +54,16 @@
           <th>口座名義</th>
           <th>口座種類</th>
           <th>口座残高</th>
-          <th>履歴数</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        <tr th:each="album : ${albums}" class="text-center align-middle">
+        <tr th:each="album : ${Albums}" class="text-center align-middle">
           <td><span th:text="${album.albumId}">album id</span></td>
           <td><a th:href="@{/albums/{albumId}(albumId=${album.albumId})}"><span th:text="${album.title}">album title</span></a></td>
-          <td><span th:text="${categories[album.artist]}">album artist</span></td>
+          <td><span th:text="${artist[album.artist]}">album artist</span></td>
           <td><span th:text="${album.releaseDate}">album releaseDate</span></td>
-          <td><span th:text="${album.musicCount}">album musicCount</span></td>
           <td>
-            <form th:action="@{/albums/{albumId}/edit(albumId=${album.albumId})}" method="get">
-              <button type="submit" class="btn btn-outline-secondary btn-sm">編集</button>
-              <div class="p-1" ></div>
-            </form>
             <form th:action="@{/albums/{albumId}/delete(albumId=${album.albumId})}" method="post">
               <button type="submit" onclick="return confirm('本当に削除しますか？');" class="btn btn-outline-secondary btn-sm">削除</button>
             </form>

@@ -20,48 +20,6 @@ public class MusicService {
         this.albumRepository = albumRepository;
     }
 
-    /*public List<Music> getMusicsByAlbumId(long albumId) {
-        return musicRepository.getMusicsByAlbumId(albumId);
-    }
-
-    @Transactional
-    public void createMusic(MusicForm musicForm) {
-        Album existingAlbum = albumRepository.getAlbumById(musicForm.getAlbumId());
-        if (existingAlbum == null) {
-            throw new AlbumNotFoundException("Album not found");
-        }
-
-        Music music = new Music();
-        music.setTitle(musicForm.getTitle());
-        music.setDuration(musicForm.getDuration());
-        music.setPrice(musicForm.getPrice());
-        music.setMethod(musicForm.getMethod());
-        music.setAlbumId(musicForm.getAlbumId());
-        
-        musicRepository.insertMusic(music);
-    }
-
-    public void deleteMusic(long musicId) {
-        musicRepository.deleteMusicById(musicId);
-    }
-
-    public Music getMusicById(long musicId) {
-        return musicRepository.selectMusicById(musicId);
-    }
-
-    @Transactional
-    public void updateMusic(long musicId, Music music) {
-        Music existingMusic = getMusicById(musicId);
-        if (existingMusic == null) {
-            throw new MusicNotFoundException("Music not found", music.getAlbumId());
-        }
-
-        if (musicId != music.getMusicId()) {
-            throw new  MusicNotFoundException("Music ID does not match", music.getAlbumId());
-        }
-        musicRepository.updateMusic(music);
-    }*/
-
         // 口座ごとに支出情報を取り出す
     public List<Music> getMusicsByAlbumId(long albumId) {
         return musicRepository.getMusicsByAlbumId(albumId);
@@ -88,21 +46,23 @@ public class MusicService {
     }
 
     // 口座に収支を追加
-    public void createMusic(MusicForm musicForm, long albumId) {
+    public void createMusic(MusicForm musicForm) {
         Music music = new Music();
-        if (musicForm.getMethod() == 1 && albumRepository.getBalanceById(albumId) - musicForm.getPrice() < 0) {
-        throw new BalanceMissingException("Balance Missing!", albumId);
-        }
+        /*if (musicForm.getMethod() == 1 && albumRepository.getBalanceById(albumId) - musicForm.getPrice() < 0) {
+        throw new BalanceMissingException("release_date Missing!", albumId);
+        }*/
         music.setTitle(musicForm.getTitle());
+        music.setDuration(musicForm.getDuration());
         music.setPrice(musicForm.getPrice());
-        music.setAlbumId(albumId);
+        music.setMethod(musicForm.getMethod());
+        music.setAlbumId(musicForm.getAlbumId());
         musicRepository.insertMusic(music);
     }
 
     // 収支を削除
     public void deleteMusicById(long musicId, long albumId) {
         if (getMusicById(musicId).getMethod() == 0 && (getPSumByAlbumId(albumId) != null ? getPSumByAlbumId(musicId) : 0) > getBSumByAlbumId(albumId) - getMusicById(musicId).getPrice()) {
-        throw new BalanceMissingException("Balance Missing!", albumId);
+        throw new BalanceMissingException("release_date Missing!", albumId);
         }
         musicRepository.deleteMusicById(musicId);
     }
@@ -110,5 +70,10 @@ public class MusicService {
     // 収支IDで金額を取得
     public Music getMusicById(long musicId) {
         return musicRepository.getMusicById(musicId);
+    }
+
+    @Transactional
+    public void updateMusic(long musicId, Music music) {
+        musicRepository.updateMusic(music);
     }
 }

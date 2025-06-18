@@ -22,7 +22,6 @@ import com.example.music_management.entity.Music;
 import com.example.music_management.service.MusicService;
 import com.example.music_management.form.MusicForm;
 import com.example.music_management.security.CustomUserDetails;
-import com.example.music_management.viewmodel.MusicViewModel;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -57,7 +56,7 @@ public class AlbumController {
 
     // ログインしているユーザーIDをもとに、全口座の詳細を取得
     List<Album> albumList = albumService.getAllAlbum(userDetails.getUserId());
-
+    System.out.println(albumList);
     // 取得した全口座の情報を1つずつ使っていく
     for (Album album : albumList) {
 
@@ -106,14 +105,14 @@ public class AlbumController {
     @PostMapping("/new")
     public String createAlbum(@AuthenticationPrincipal CustomUserDetails userDetails, AlbumForm albumForm) {
         albumService.createAlbum(albumForm, userDetails.getUserId());
-        return "redirect:/bank";
+        return "redirect:/albums";
     }
 
     // 口座削除
     @PostMapping("/{albumId}/delete")
     public String deleteAlbum(@PathVariable long albumId) {
         albumService.deleteAlbum(albumId);
-        return "redirect:/album";
+        return "redirect:/albums";
     }
 
     // 口座の詳細に移動・口座ごとに支出情報を取り出す
@@ -137,7 +136,7 @@ public class AlbumController {
         model.addAttribute("bop", bSum - pSum);//収支
         albumService.setPrice(bSum - pSum, albumId);//履歴
         model.addAttribute("album", albumService.getAlbumById(albumId));
-        return "album/album-music";
+        return "album/album-detail";
     }
 
     // 口座に収支を追加
@@ -167,7 +166,7 @@ public class AlbumController {
     @PostMapping("/{albumId}/musics/{musicId}/delete")
     public String deleteMusic(@PathVariable long albumId, @PathVariable long musicId) {
         musicService.deleteMusicById(musicId, albumId);
-        return "redirect:/album/" + albumId;
+        return "redirect:/albums/" + albumId;
     }
 
     @GetMapping("/{albumId}/musics/{musicId}/edit")

@@ -78,4 +78,8 @@ public class MusicRepository {
   public Music getMusicById(long musicId) {
     return musicMapper.selectMusicById(musicId);
   }
+
+  public void updateMusic(Music music) {
+        musicMapper.updateMusic(music);
+  }
 }

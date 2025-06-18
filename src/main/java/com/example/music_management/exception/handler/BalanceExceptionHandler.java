@@ -12,6 +12,6 @@ public class BalanceExceptionHandler {
   @ExceptionHandler(BalanceMissingException.class)
   public String handleBalanceMissingException(BalanceMissingException e, RedirectAttributes redirectAttributes) {
     redirectAttributes.addFlashAttribute("error", "残高不足のため決済処理に失敗しました ");
-    return "redirect:/bank/" + e.getAlbumId();
+    return "redirect:/album/" + e.getAlbumId();
   }
 }

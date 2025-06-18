@@ -60,8 +60,8 @@ public class AlbumRepository {
     }
 
     // 口座の残高を変更する
-    public void setPrice(int Price, long albumId) {
-        albumMapper.updatePrice(Price, albumId);
+    public void setPrice(int price, long albumId) {
+        albumMapper.updatePrice(price, albumId);
     }
 
     // 口座残高を取得

@@ -54,22 +54,16 @@
           <th>口座名義</th>
           <th>口座種類</th>
           <th>口座残高</th>
-          <th>履歴数</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        <tr th:each="album : ${albums}" class="text-center align-middle">
+        <tr th:each="album : ${Albums}" class="text-center align-middle">
           <td><span th:text="${album.albumId}">album id</span></td>
           <td><a th:href="@{/albums/{albumId}(albumId=${album.albumId})}"><span th:text="${album.title}">album title</span></a></td>
-          <td><span th:text="${categories[album.artist]}">album artist</span></td>
+          <td><span th:text="${artist[album.artist]}">album artist</span></td>
           <td><span th:text="${album.releaseDate}">album releaseDate</span></td>
-          <td><span th:text="${album.musicCount}">album musicCount</span></td>
           <td>
-            <form th:action="@{/albums/{albumId}/edit(albumId=${album.albumId})}" method="get">
-              <button type="submit" class="btn btn-outline-secondary btn-sm">編集</button>
-              <div class="p-1" ></div>
-            </form>
             <form th:action="@{/albums/{albumId}/delete(albumId=${album.albumId})}" method="post">
               <button type="submit" onclick="return confirm('本当に削除しますか？');" class="btn btn-outline-secondary btn-sm">削除</button>
             </form>

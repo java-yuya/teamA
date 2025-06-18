@@ -19,7 +19,7 @@ public interface AlbumMapper {
   List<Album> selectAllAlbum(long userId);
 
   // ユーザーごとに口座を設立
-  @Insert("insert into albums (title, artist, user_id) values (#{title}, #{artist}, #{userId})")
+  @Insert("insert into albums (title, artist, release_date, user_id) values (#{title}, #{artist}, #{releaseDate}, #{userId})")
   @Options(useGeneratedKeys = true, keyProperty = "albumId")
   void insertAlbum(Album album);
 
@@ -28,11 +28,11 @@ public interface AlbumMapper {
   Album selectAlbumById(long albumId);
 
   // 口座の残高を変更する
-  @Update("update albums set balance = #{price} where album_id = #{albumId}")
-  void updatePrice(int Price, long albumId);
+  @Update("update albums set release_date = #{price} where album_id = #{albumId}")
+  void updatePrice(int price, long albumId);
 
   // 口座残高を取得
-  @Select("select balance from albums where album_id = #{albumId}")
+  @Select("select release_date from albums where album_id = #{albumId}")
   int selectBalanceById(long albumId);
 
   // 口座削除

@@ -22,10 +22,6 @@
                 <option value="1">定期預金</option>
             </select>
         </div>
-        <div class="mb-3">
-            <label for="release-date" class="form-label">金額：</label>
-            <input type="number" id="release-date" name="release-date" class="form-control" th:field="*{releaseDate}">
-        </div>
         <button type="submit" class="btn btn-primary w-100">追加</button>
         <a th:href="@{/albums}" class="btn btn-secondary mt-3 w-100">一覧に戻る</a>
    </form>

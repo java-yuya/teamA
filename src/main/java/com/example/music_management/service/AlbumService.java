@@ -60,8 +60,9 @@ public class AlbumService {
     // ユーザーごとに口座を設立
     public void createAlbum(AlbumForm albumForm, long userId) {
         Album album = new Album();
-        album.setArtist(albumForm.getArtist());
         album.setTitle(albumForm.getTitle());
+        album.setArtist(albumForm.getArtist());
+        album.setReleaseDate(albumForm.getReleaseDate());
         album.setUserId(userId);
         albumRepository.insertAlbum(album);
     }
@@ -72,8 +73,8 @@ public class AlbumService {
     }
 
     // 口座の残高を変更する
-    public void setPrice(int Price, long albumId) {
-        albumRepository.setPrice(Price, albumId);
+    public void setPrice(int price, long albumId) {
+        albumRepository.setPrice(price, albumId);
     }
 
     // 口座残高を取得

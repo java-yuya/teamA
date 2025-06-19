@@ -14,11 +14,6 @@
 <div class="p-2"></div>
 <table class="table table-bordered w-50 shadow text-center mx-auto">
     <!-- <table class="table-light table-striped table-bordered w-75 mx-auto shadow text-center"> -->
-
-    <tr>
-        <th class="table-light">口座ID</th>
-        <td th:text="${album.albumId}"></td>
-    </tr>
     <tr>
         <th class="table-light">口座名義</th>
         <td th:text="${album.title}"></td>
@@ -42,7 +37,6 @@
 <table class="table-light table-striped table-bordered w-75 mx-auto shadow text-center bg-body">
     <theed class="table-light">
     <tr>
-        <th>収支ID</th>
         <th>内容</th>
         <th>決済日</th>
         <th>金額</th>
@@ -51,7 +45,6 @@
     </tr>
     </theed>
     <tr th:each="music : ${musicList}">
-        <td><span th:text="${music.musicId}">music id</span></td>
         <td><span th:text="${music.title}">music title</span></td>
         <td><span th:text="${#temporals.format(music.duration, 'yyyy-MM-dd')}">music duration</span></td>
         <td><span th:text="${music.price}">music price</span></td>

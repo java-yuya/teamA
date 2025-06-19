@@ -13,8 +13,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.TitlePaneLayout;
-
 import java.util.ArrayList;
 import com.example.music_management.form.AlbumForm;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -103,7 +101,13 @@ public class AlbumController {
 
     // ユーザーごとに口座を設立
     @PostMapping("/new")
-    public String createAlbum(@AuthenticationPrincipal CustomUserDetails userDetails, AlbumForm albumForm) {
+    public String createAlbum(@AuthenticationPrincipal CustomUserDetails userDetails, AlbumForm albumForm,
+                                @RequestParam("title") String title,
+                                RedirectAttributes redirectAttributes) {
+        if (title.trim().isEmpty()) {
+            redirectAttributes.addFlashAttribute("error", "口座名は空白にできません");
+            return "redirect:/albums/new";
+        }
         albumService.createAlbum(albumForm, userDetails.getUserId());
         return "redirect:/albums";
     }

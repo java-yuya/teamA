@@ -14,7 +14,14 @@
 
 <div th:fragment="header">
     <header class="mb-5 bg-light py-2 text-center fixed-top"> <!--Navbarを固定する-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    
+    <style>
+        body {
+            cursor: url('https://postfiles.pstatic.net/MjAyNTA2MTlfMTU4/MDAxNzUwMjk2NTI4MzA0.ULIbOPkPPGNA6kbnwCQHRlnQ715InjApUF88Z_-SrSAg.r9ArxUqpIK9A0esyBVhrXoqETnCc9BUWzzVHYuDNZkYg.PNG/%E5%AE%B6%E8%A8%88%E7%B0%BF%E3%81%95%E3%82%93.png?type=w966'), auto;
+        }
+  </style>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand fw-bold ms-4 fs-3" th:href="@{/albums}">
             <i class="bi bi-journals fs-3"></i> 超・家計簿さん
         </a>

@@ -10,7 +10,6 @@
     </div>
     <br>
 
-    
     <!--収支、収益、支出ボックス-->
     <div class="mt-5  mb-5 text-center rounded-3 ">
     <div class="p-4"></div>
@@ -20,7 +19,7 @@
           <div class="card-body py-2">
             <i class="bi bi-piggy-bank-fill" style="font-size: 5rem; color: #20C997;"></i>
             <h5 class="card-title">収支</h5>
-            <p th:text=${bop} class "card-text"></p>
+            <p th:text="${bop}" class="card-text fs-3"></p>
           </div>
         </div>
       </div>
@@ -29,7 +28,7 @@
           <div class="card-body py-2">
             <i class="bi bi-arrow-up-circle-fill" style="font-size: 5rem; color: #339AF0;"></i>
             <h5 class="card-title">収益</h5>
-            <p th:text=${bSum} class "card-text"></p>
+            <p th:text="${bop}" class="card-text fs-3"></p>
           </div>
         </div>
       </div>
@@ -38,7 +37,7 @@
           <div class="card-body py-2">
             <i class="bi bi-arrow-down-circle-fill" style="font-size: 5rem; color: #F06595;"></i>
             <h5 class="card-title">支出</h5>
-            <p th:text=${pSum} class "card-text"></p>
+            <p th:text="${bop}" class="card-text fs-3"></p>
           </div>
         </div>
       </div>
